@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Блог — ROBLOX VAULT</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800;900&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="logo"><span class="logo-mark">◈</span> ROBLOX<span class="accent">VAULT</span></a>
+    <nav class="nav-links">
+      <a href="index.html">Магазин</a>
+      <a href="blog.html" class="active">Блог</a>
+      <a href="dashboard.html">Кабинет</a>
+    </nav>
+    <div class="nav-auth" id="navAuth">
+      <a href="login.html" class="btn btn-ghost">Войти</a>
+    </div>
+  </div>
+</header>
+
+<main class="section">
+  <div class="section-head">
+    <div>
+      <h1>Блог <span class="accent">ROBLOX VAULT</span></h1>
+      <p class="muted">Новости, обзоры и гайды по скинам Roblox</p>
+    </div>
+    <button class="btn btn-primary" id="createPostBtn">✏️ Создать пост</button>
+  </div>
+
+  <!-- Форма создания поста -->
+  <div class="post-form hidden" id="postForm">
+    <h3>Новый пост</h3>
+    <div class="upload-form mt-30">
+      <label>Заголовок
+        <input type="text" id="postTitle" placeholder="Топ-10 скинов сентября">
+      </label>
+      <label>Текст поста
+        <textarea id="postText" rows="5" placeholder="Расскажи о чём пост..."></textarea>
+      </label>
+      <label>Тег
+        <select id="postTag">
+          <option value="epic">ОБЗОР</option>
+          <option value="rare">ГАЙД</option>
+          <option value="legendary">НОВОСТИ</option>
+        </select>
+      </label>
+      <label class="file-drop">
+        <input type="file" id="postImage" accept="image/*">
+        <span>📎 Прикрепить картинку (необязательно)</span>
+      </label>
+      <div style="display:flex; gap:10px;">
+        <button class="btn btn-primary btn-lg" id="submitPost">Опубликовать</button>
+        <button class="btn btn-outline btn-lg" id="cancelPost">Отмена</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Сетка постов -->
+  <div class="grid-blog mt-30" id="blogGrid">
+    <article class="blog-card">
+      <div class="blog-cover" style="background-image:url('assets/blog1.png')"></div>
+      <div class="blog-body">
+        <span class="tag epic">ОБЗОР</span>
+        <h3>Топ-10 скинов сентября 2026</h3>
+        <p class="muted">Разбираем самые горячие скины этого месяца...</p>
+        <div class="blog-meta">
+          <span>👤 AdminRoot</span>
+          <span>📅 10 сентября</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="blog-card">
+      <div class="blog-cover" style="background-image:url('assets/blog2.png')"></div>
+      <div class="blog-body">
+        <span class="tag rare">ГАЙД</span>
+        <h3>Как выбить легендарку из кейса</h3>
+        <p class="muted">Секретные стратегии открытия кейсов...</p>
+        <div class="blog-meta">
+          <span>👤 NinjaPro</span>
+          <span>📅 8 сентября</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="blog-card">
+      <div class="blog-cover" style="background-image:url('assets/blog3.png')"></div>
+      <div class="blog-body">
+        <span class="tag legendary">НОВОСТИ</span>
+        <h3>Обновление Roblox 2026 — что нового</h3>
+        <p class="muted">Разбираем патч и его влияние на рынок скинов...</p>
+        <div class="blog-meta">
+          <span>👤 AdminRoot</span>
+          <span>📅 5 сентября</span>
+        </div>
+      </div>
+    </article>
+  </div>
+</main>
+
+<script src="js/auth.js"></script>
+<script src="js/blog.js"></script>
+</body>
+</html>

@@ -1,0 +1,1814 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Автошкола DriveSchool.kz — Обучение вождению</title>
+    <meta name="description" content="Автошкола DriveSchool.kz: профессиональное обучение вождению на категорию B. Высокий процент сдачи экзамена с первого раза, современные автомобили и опытные инструкторы.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        (function() {
+            try {
+                var choice = localStorage.getItem('ds_theme') || 'light';
+                var actual = choice;
+                if (choice === 'system') {
+                    actual = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                }
+                document.documentElement.setAttribute('data-theme', actual);
+            } catch(e) {}
+        })();
+    </script>
+
+    <style>
+        :root {
+            --primary: #1d4ed8;
+            --primary-hover: #1e40af;
+            --primary-light: #3b82f6;
+            --primary-bg: #eff6ff;
+            --dark: #0f172a;
+            --dark-muted: #334155;
+            --text: #475569;
+            --text-light: #94a3b8;
+            --bg-white: #ffffff;
+            --bg-light: #f8fafc;
+            --border: #e2e8f0;
+            --success: #10b981;
+            --whatsapp: #25d366;
+            --whatsapp-hover: #128c7e;
+            --instagram: #e1306c;
+
+            --font-main: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+            --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06);
+            --shadow-md: 0 4px 20px -2px rgba(29, 78, 216, 0.08);
+            --shadow-lg: 0 12px 30px -4px rgba(29, 78, 216, 0.12);
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --radius-full: 9999px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; font-size: 16px; }
+        body { font-family: var(--font-main); color: var(--text); background-color: var(--bg-white); line-height: 1.6; overflow-x: hidden; }
+        a { text-decoration: none; color: inherit; transition: var(--transition); }
+        ul { list-style: none; }
+        img { max-width: 100%; height: auto; display: block; }
+        button, input, select { font-family: inherit; outline: none; }
+
+        .container { width: 100%; max-width: 1240px; margin: 0 auto; padding: 0 20px; }
+        .section { padding: 90px 0; }
+        .bg-light { background-color: var(--bg-light); }
+        .text-center { text-align: center; }
+
+        .text-gradient {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-header { margin-bottom: 50px; }
+        .section-subtitle {
+            display: inline-block; color: var(--primary); font-weight: 700; font-size: 0.9rem;
+            text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px;
+            background: var(--primary-bg); padding: 6px 16px; border-radius: var(--radius-full);
+        }
+        .section-title { font-size: 2.25rem; font-weight: 800; color: var(--dark); line-height: 1.25; margin-bottom: 12px; }
+        .section-description { font-size: 1.1rem; color: var(--text); max-width: 640px; margin: 0 auto; }
+
+        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; font-weight: 700; border-radius: var(--radius-md); cursor: pointer; transition: var(--transition); border: 2px solid transparent; }
+        .btn--primary { background-color: var(--primary); color: var(--bg-white); box-shadow: 0 4px 14px rgba(29, 78, 216, 0.35); }
+        .btn--primary:hover { background-color: var(--primary-hover); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(29, 78, 216, 0.45); }
+        .btn--outline { background-color: transparent; color: var(--primary); border-color: var(--primary); }
+        .btn--outline:hover { background-color: var(--primary-bg); transform: translateY(-2px); }
+        .btn--whatsapp { background-color: var(--whatsapp); color: #ffffff; border-color: var(--whatsapp); box-shadow: 0 4px 14px rgba(37, 211, 102, 0.3); }
+        .btn--whatsapp:hover { background-color: var(--whatsapp-hover); border-color: var(--whatsapp-hover); transform: translateY(-2px); }
+        .btn--sm { padding: 8px 18px; font-size: 0.9rem; }
+        .btn--lg { padding: 16px 32px; font-size: 1.05rem; }
+        .btn--full { width: 100%; }
+
+        .header { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; background-color: rgba(255, 255, 255, 0.94); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(226, 232, 240, 0.8); transition: var(--transition); }
+        .header__container { display: flex; align-items: center; justify-content: space-between; height: 80px; }
+        .logo { display: flex; align-items: center; gap: 12px; font-size: 1.5rem; font-weight: 800; color: var(--dark); }
+        .logo__img { height: 48px; width: 48px; object-fit: contain; border-radius: var(--radius-full); }
+        .logo__accent { color: var(--primary); }
+        .nav__list { display: flex; align-items: center; gap: 30px; }
+        .nav__link { font-weight: 600; font-size: 0.95rem; color: var(--dark-muted); position: relative; padding: 6px 0; }
+        .nav__link:hover, .nav__link.active { color: var(--primary); }
+        .nav__link::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0%; height: 2px; background-color: var(--primary); transition: var(--transition); border-radius: 2px; }
+        .nav__link:hover::after, .nav__link.active::after { width: 100%; }
+        .header__actions { display: flex; align-items: center; gap: 16px; }
+        .header__phone { display: flex; align-items: center; gap: 8px; font-weight: 700; color: var(--dark); font-size: 0.95rem; }
+        .header__phone i { color: var(--primary); }
+
+        .burger { display: none; flex-direction: column; justify-content: space-between; width: 30px; height: 20px; background: transparent; border: none; cursor: pointer; z-index: 1001; }
+        .burger span { width: 100%; height: 3px; background-color: var(--dark); border-radius: 3px; transition: var(--transition); }
+
+        .hero { padding-top: 150px; padding-bottom: 90px; background: radial-gradient(circle at 90% 10%, rgba(59, 130, 246, 0.08) 0%, transparent 60%); }
+        .hero__container { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        .badge { display: inline-flex; align-items: center; gap: 8px; background-color: var(--primary-bg); color: var(--primary); padding: 8px 16px; border-radius: var(--radius-full); font-size: 0.9rem; font-weight: 700; margin-bottom: 20px; border: 1px solid rgba(59, 130, 246, 0.2); }
+        .badge__icon { color: #ef4444; }
+        .hero__title { font-size: 3.25rem; font-weight: 800; color: var(--dark); line-height: 1.15; margin-bottom: 20px; letter-spacing: -0.5px; }
+        .hero__subtitle { font-size: 1.2rem; color: var(--text); margin-bottom: 35px; max-width: 540px; }
+        .hero__btns { display: flex; align-items: center; gap: 16px; margin-bottom: 45px; flex-wrap: wrap; }
+        .hero__stats { display: flex; align-items: center; gap: 24px; padding-top: 25px; border-top: 1px solid var(--border); }
+        .stat-item { display: flex; flex-direction: column; }
+        .stat-item__number { font-size: 1.75rem; font-weight: 800; color: var(--primary); }
+        .stat-item__label { font-size: 0.85rem; color: var(--text-light); font-weight: 500; }
+        .stat-divider { width: 1px; height: 40px; background-color: var(--border); }
+
+        .hero__image-wrapper { position: relative; display: flex; justify-content: center; }
+        .hero__image { width: 100%; max-height: 480px; object-fit: cover; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); }
+        .hero__card { position: absolute; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); padding: 16px 20px; border-radius: var(--radius-md); box-shadow: var(--shadow-lg); border: 1px solid var(--border); display: flex; align-items: center; gap: 12px; }
+        .hero__card--top { top: -20px; left: -20px; }
+        .hero__card--top i { font-size: 1.8rem; color: var(--primary); }
+        .hero__card--top strong { display: block; color: var(--dark); font-size: 0.95rem; }
+        .hero__card--top span { font-size: 0.8rem; color: var(--text); }
+        .hero__card--bottom { bottom: -20px; right: -20px; flex-direction: column; align-items: flex-start; gap: 4px; }
+        .rating-stars { color: #f59e0b; font-size: 0.85rem; }
+
+        .features__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+        .feature-card { background: var(--bg-white); padding: 30px 24px; border-radius: var(--radius-md); border: 1px solid var(--border); transition: var(--transition); }
+        .feature-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); border-color: var(--primary-light); }
+        .feature-card__icon { width: 54px; height: 54px; background-color: var(--primary-bg); color: var(--primary); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 20px; }
+        .feature-card__title { font-size: 1.15rem; color: var(--dark); font-weight: 700; margin-bottom: 10px; }
+        .feature-card__text { font-size: 0.95rem; color: var(--text); }
+
+        .filter-buttons { display: flex; justify-content: center; gap: 12px; margin-bottom: 40px; }
+        .filter-btn { padding: 10px 22px; border-radius: var(--radius-full); border: 1px solid var(--border); background-color: var(--bg-white); color: var(--dark-muted); font-weight: 600; font-size: 0.95rem; cursor: pointer; transition: var(--transition); }
+        .filter-btn:hover, .filter-btn.active { background-color: var(--primary); color: var(--bg-white); border-color: var(--primary); }
+
+        .fleet__grid, .instructors__grid, .pricing__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        .car-card, .instructor-card, .price-card { background: var(--bg-white); border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border); transition: var(--transition); }
+        .car-card:hover, .instructor-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+
+        .car-card__image-container, .instructor-card__image-wrapper { position: relative; height: 240px; background-color: #f1f5f9; overflow: hidden; }
+        .car-card__image, .instructor-card__image { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .car-card:hover .car-card__image { transform: scale(1.05); }
+
+        .car-card__badge { position: absolute; top: 14px; right: 14px; padding: 6px 14px; border-radius: var(--radius-full); font-size: 0.8rem; font-weight: 800; color: var(--bg-white); }
+        .badge--akpp { background-color: #2563eb; }
+        .badge--mkpp { background-color: #059669; }
+
+        .car-card__body, .instructor-card__info { padding: 24px; }
+        .car-card__title, .instructor-card__name { font-size: 1.3rem; color: var(--dark); font-weight: 700; margin-bottom: 12px; }
+        .car-card__specs { display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid var(--border); }
+        .spec-item { font-size: 0.9rem; color: var(--text); display: flex; align-items: center; gap: 10px; }
+        .spec-item i { color: var(--primary); width: 16px; }
+
+        .instructor-card__experience { position: absolute; bottom: 14px; left: 14px; background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(4px); color: var(--bg-white); padding: 4px 12px; border-radius: var(--radius-full); font-size: 0.8rem; font-weight: 600; }
+        .instructor-card__role { display: block; color: var(--primary); font-weight: 600; font-size: 0.9rem; margin-bottom: 12px; }
+        .instructor-card__desc { font-size: 0.95rem; color: var(--text); margin-bottom: 16px; }
+        .instructor-card__rating { font-size: 0.85rem; color: var(--dark); font-weight: 700; display: flex; align-items: center; gap: 6px; }
+        .instructor-card__rating i { color: #f59e0b; }
+
+        .price-card { padding: 36px 30px; position: relative; display: flex; flex-direction: column; justify-content: space-between; }
+        .price-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
+        .price-card--popular { border: 2px solid var(--primary); box-shadow: var(--shadow-lg); padding-top: 48px; }
+        .popular-badge { position: absolute; top: 14px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: var(--bg-white); padding: 6px 18px; border-radius: var(--radius-full); font-size: 0.78rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap; box-shadow: 0 4px 10px rgba(29, 78, 216, 0.25); }
+        .price-card__title { font-size: 1.4rem; color: var(--dark); font-weight: 700; margin-bottom: 10px; }
+        .price-card__amount { font-size: 2.3rem; font-weight: 800; color: var(--primary); line-height: 1.1; margin-bottom: 6px; }
+        .price-unit { font-size: 0.95rem; color: var(--text-light); font-weight: 500; }
+        .price-card__sub { display: block; font-size: 0.85rem; color: var(--text-light); margin-bottom: 24px; }
+        .price-card__list { margin-bottom: 30px; display: flex; flex-direction: column; gap: 12px; }
+        .price-card__list li { font-size: 0.95rem; color: var(--text); display: flex; align-items: center; gap: 10px; }
+        .price-card__list i { color: var(--success); }
+
+        .gis-widget-wrapper { margin-bottom: 0; }
+        .gis-card { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); border-radius: var(--radius-lg); padding: 24px 32px; display: flex; align-items: center; justify-content: space-between; gap: 24px; box-shadow: var(--shadow-md); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .gis-card__badge-tag { display: inline-flex; align-items: center; gap: 6px; background: rgba(59, 130, 246, 0.2); color: #60a5fa; padding: 4px 12px; border-radius: var(--radius-full); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+        .gis-card__title { font-size: 1.25rem; font-weight: 800; color: #ffffff; margin-bottom: 4px; }
+        .gis-card__sub { font-size: 0.88rem; color: #94a3b8; }
+        .gis-card__widget-box { display: flex; align-items: center; justify-content: center; background: rgba(255, 255, 255, 0.05); padding: 10px 16px; border-radius: var(--radius-md); border: 1px solid rgba(255, 255, 255, 0.1); }
+
+        .footer { background-color: var(--dark); color: #cbd5e1; padding-top: 80px; }
+        .footer__container { display: grid; grid-template-columns: 2fr 2fr 1fr; gap: 50px; margin-bottom: 60px; }
+        .logo--footer { color: var(--bg-white); margin-bottom: 16px; }
+        .logo__img--footer { filter: brightness(1.2); }
+        .footer__desc { font-size: 0.9rem; color: #94a3b8; margin-bottom: 20px; max-width: 320px; }
+        .social-links { display: flex; gap: 12px; }
+        .social-link { width: 38px; height: 38px; background: rgba(255, 255, 255, 0.08); color: var(--bg-white); border-radius: var(--radius-full); display: flex; align-items: center; justify-content: center; transition: var(--transition); }
+        .social-link:hover { background: var(--primary); transform: translateY(-3px); }
+        .social-link--wa { background: var(--whatsapp); }
+        .social-link--wa:hover { background: var(--whatsapp-hover); }
+        .social-link--insta { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
+        .social-link--insta:hover { transform: translateY(-3px) scale(1.08); box-shadow: 0 4px 12px rgba(225, 48, 108, 0.4); }
+        .footer__title { color: var(--bg-white); font-size: 1.15rem; font-weight: 700; margin-bottom: 20px; }
+        .contacts-list { display: flex; flex-direction: column; gap: 14px; font-size: 0.9rem; }
+        .contacts-list li { display: flex; align-items: flex-start; gap: 12px; }
+        .contacts-list i { color: var(--primary-light); margin-top: 4px; }
+        .contacts-list i.fa-whatsapp { color: var(--whatsapp); }
+        .contacts-list i.fa-instagram { color: var(--instagram); }
+        .contacts-list a:hover { color: var(--bg-white); }
+        .footer__links ul { display: flex; flex-direction: column; gap: 10px; font-size: 0.9rem; }
+        .footer__links a:hover { color: var(--bg-white); padding-left: 4px; }
+        .footer__bottom { border-top: 1px solid rgba(255, 255, 255, 0.1); padding: 24px 0; font-size: 0.85rem; color: #94a3b8; }
+        .footer__bottom-container { display: flex; align-items: center; justify-content: space-between; }
+        .privacy-link:hover { color: var(--bg-white); }
+
+        .btn--login { background-color: transparent; color: var(--dark); border: 2px solid var(--border); padding: 8px 18px; font-size: 0.9rem; font-weight: 700; }
+        .btn--login:hover { background-color: var(--primary-bg); border-color: var(--primary); color: var(--primary); }
+        .btn--login i { color: var(--primary); }
+
+        .modal-overlay { position: fixed; inset: 0; background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(6px); z-index: 2000; display: none; align-items: center; justify-content: center; padding: 20px; opacity: 0; transition: opacity 0.3s ease; }
+        .modal-overlay.active { display: flex; opacity: 1; }
+        .modal { background: var(--bg-white); border-radius: var(--radius-lg); box-shadow: 0 25px 60px -10px rgba(15, 23, 42, 0.35); width: 100%; max-width: 420px; padding: 36px 32px; position: relative; transform: translateY(20px) scale(0.96); transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .modal-overlay.active .modal { transform: translateY(0) scale(1); }
+        .modal__close { position: absolute; top: 14px; right: 14px; width: 36px; height: 36px; border-radius: var(--radius-full); background: var(--bg-light); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--text); font-size: 1rem; transition: var(--transition); }
+        .modal__close:hover { background: #fee2e2; color: #dc2626; transform: rotate(90deg); }
+        .modal__icon { width: 64px; height: 64px; background: var(--primary-bg); color: var(--primary); border-radius: var(--radius-full); display: flex; align-items: center; justify-content: center; font-size: 1.6rem; margin: 0 auto 18px; }
+        .modal__title { font-size: 1.5rem; font-weight: 800; color: var(--dark); text-align: center; margin-bottom: 6px; }
+        .modal__subtitle { font-size: 0.9rem; color: var(--text-light); text-align: center; margin-bottom: 28px; }
+        .form-group { margin-bottom: 18px; }
+        .form-group label { display: block; font-size: 0.88rem; font-weight: 700; color: var(--dark-muted); margin-bottom: 8px; }
+        .form-input { width: 100%; padding: 12px 16px; border: 2px solid var(--border); border-radius: var(--radius-md); font-size: 0.95rem; color: var(--dark); background: var(--bg-white); transition: var(--transition); }
+        .form-input:focus { border-color: var(--primary); box-shadow: 0 0 0 4px rgba(29, 78, 216, 0.1); }
+        .form-error { background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; padding: 10px 14px; border-radius: var(--radius-md); font-size: 0.85rem; font-weight: 600; margin-bottom: 16px; display: none; align-items: center; gap: 8px; }
+        .form-error.active { display: flex; }
+
+        .admin-panel { position: fixed; top: 0; right: -420px; width: 400px; max-width: 100%; height: 100vh; background: var(--bg-white); box-shadow: -10px 0 40px rgba(15, 23, 42, 0.15); z-index: 1900; transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1); display: flex; flex-direction: column; overflow-y: auto; }
+        .admin-panel.active { right: 0; }
+        .admin-panel__header { padding: 24px; background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); color: #fff; display: flex; align-items: center; justify-content: space-between; }
+        .admin-panel__user { display: flex; align-items: center; gap: 12px; }
+        .admin-panel__avatar { width: 44px; height: 44px; border-radius: var(--radius-full); background: rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; font-weight: 800; }
+        .admin-panel__name { font-weight: 800; font-size: 1rem; line-height: 1.2; }
+        .admin-panel__role { font-size: 0.78rem; opacity: 0.85; }
+        .admin-panel__body { padding: 20px; flex: 1; }
+        .admin-menu { display: flex; flex-direction: column; gap: 8px; }
+        .admin-menu__item { display: flex; align-items: center; gap: 14px; padding: 14px 16px; border-radius: var(--radius-md); border: 1px solid var(--border); background: var(--bg-white); color: var(--dark-muted); font-weight: 600; font-size: 0.95rem; cursor: pointer; transition: var(--transition); text-align: left; width: 100%; }
+        .admin-menu__item:hover { background: var(--primary-bg); border-color: var(--primary-light); color: var(--primary); transform: translateX(4px); }
+        .admin-menu__item i { width: 20px; color: var(--primary); font-size: 1rem; }
+        .admin-menu__item--logout { margin-top: 20px; border-color: #fecaca; color: #dc2626; }
+        .admin-menu__item--logout i { color: #dc2626; }
+        .admin-menu__item--logout:hover { background: #fef2f2; border-color: #dc2626; color: #dc2626; }
+        .admin-panel__footer { padding: 16px 20px; border-top: 1px solid var(--border); font-size: 0.78rem; color: var(--text-light); text-align: center; }
+
+        .admin-overlay { position: fixed; inset: 0; background: rgba(15, 23, 42, 0.3); z-index: 1800; opacity: 0; visibility: hidden; transition: var(--transition); }
+        .admin-overlay.active { opacity: 1; visibility: visible; }
+
+        .editor-modal { max-width: 720px; max-height: 90vh; display: flex; flex-direction: column; padding: 0; overflow: hidden; }
+        .editor-modal__header { padding: 24px 28px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; background: var(--bg-light); }
+        .editor-modal__title { font-size: 1.25rem; font-weight: 800; color: var(--dark); display: flex; align-items: center; gap: 10px; }
+        .editor-modal__title i { color: var(--primary); }
+        .editor-modal__body { padding: 24px 28px; overflow-y: auto; flex: 1; }
+        .editor-modal__footer { padding: 18px 28px; border-top: 1px solid var(--border); display: flex; gap: 12px; justify-content: flex-end; background: var(--bg-light); }
+        .editor-field { margin-bottom: 20px; }
+        .editor-field label { display: block; font-size: 0.85rem; font-weight: 700; color: var(--dark-muted); margin-bottom: 8px; }
+        .editor-field input, .editor-field textarea, .editor-field select { width: 100%; padding: 11px 14px; border: 2px solid var(--border); border-radius: var(--radius-md); font-size: 0.92rem; color: var(--dark); background: var(--bg-white); transition: var(--transition); font-family: inherit; }
+        .editor-field textarea { resize: vertical; min-height: 80px; }
+        .editor-field input:focus, .editor-field textarea:focus, .editor-field select:focus { border-color: var(--primary); box-shadow: 0 0 0 4px rgba(29, 78, 216, 0.1); }
+        .editor-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+        .editor-section-title { font-size: 0.95rem; font-weight: 800; color: var(--primary); text-transform: uppercase; letter-spacing: 1px; margin: 24px 0 16px; padding-top: 16px; border-top: 1px dashed var(--border); }
+        .editor-section-title:first-child { margin-top: 0; padding-top: 0; border-top: none; }
+
+        .editor-save-btn { background: var(--success); color: #fff; border-color: var(--success); }
+        .editor-save-btn:hover { background: #059669; border-color: #059669; }
+        .toast { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(100px); background: var(--dark); color: #fff; padding: 14px 24px; border-radius: var(--radius-md); font-weight: 600; font-size: 0.92rem; z-index: 3000; box-shadow: 0 10px 30px rgba(0,0,0,0.25); opacity: 0; transition: all 0.3s ease; display: flex; align-items: center; gap: 10px; }
+        .toast.active { transform: translateX(-50%) translateY(0); opacity: 1; }
+        .toast i { color: #34d399; }
+
+        .car-edit-item { border: 1px solid var(--border); border-radius: var(--radius-md); padding: 16px; margin-bottom: 14px; background: var(--bg-light); }
+        .car-edit-item__header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+        .car-edit-item__num { font-weight: 800; color: var(--primary); font-size: 0.85rem; }
+        .car-edit-item__delete { background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; padding: 6px 12px; border-radius: var(--radius-md); font-size: 0.8rem; font-weight: 700; cursor: pointer; transition: var(--transition); }
+        .car-edit-item__delete:hover { background: #dc2626; color: #fff; }
+        .car-edit-item__preview { width: 100%; height: 120px; object-fit: cover; border-radius: var(--radius-md); margin-top: 8px; background: #e2e8f0; }
+
+        html { transition: background-color 0.3s ease; }
+        body { transition: background-color 0.3s ease, color 0.3s ease; }
+
+        .theme-toggle { width: 42px; height: 42px; border-radius: var(--radius-full); border: 2px solid var(--border); background: var(--bg-white); color: var(--dark); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1rem; transition: var(--transition); position: relative; overflow: hidden; }
+        .theme-toggle:hover { border-color: var(--primary); color: var(--primary); transform: rotate(15deg) scale(1.05); }
+        .theme-toggle i { transition: transform 0.4s ease, opacity 0.3s ease; position: absolute; }
+        .theme-toggle .icon-sun { opacity: 0; transform: rotate(90deg) scale(0.5); }
+        .theme-toggle .icon-moon { opacity: 1; transform: rotate(0) scale(1); }
+
+        .footer__theme { display: flex; align-items: center; gap: 12px; margin-top: 20px; }
+        .footer__theme-label { font-size: 0.9rem; color: #94a3b8; font-weight: 600; }
+        .footer__theme .theme-toggle { width: 44px; height: 44px; background: rgba(255, 255, 255, 0.08); border-color: rgba(255, 255, 255, 0.15); color: #f1f5f9; }
+        .footer__theme .theme-toggle:hover { background: rgba(59, 130, 246, 0.2); border-color: var(--primary-light); color: var(--primary-light); }
+
+        html[data-theme="dark"] {
+            --primary: #3b82f6;
+            --primary-hover: #2563eb;
+            --primary-light: #60a5fa;
+            --primary-bg: rgba(59, 130, 246, 0.12);
+            --dark: #f1f5f9;
+            --dark-muted: #cbd5e1;
+            --text: #94a3b8;
+            --text-light: #64748b;
+            --bg-white: #0f172a;
+            --bg-light: #1e293b;
+            --border: #334155;
+            --success: #34d399;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.4);
+            --shadow-md: 0 4px 20px -2px rgba(0, 0, 0, 0.5);
+            --shadow-lg: 0 12px 30px -4px rgba(0, 0, 0, 0.6);
+        }
+
+        html[data-theme="dark"] .theme-toggle .icon-sun { opacity: 1; transform: rotate(0) scale(1); }
+        html[data-theme="dark"] .theme-toggle .icon-moon { opacity: 0; transform: rotate(-90deg) scale(0.5); }
+        html[data-theme="dark"] body { background-color: #0f172a; color: #94a3b8; }
+        html[data-theme="dark"] .header { background-color: rgba(15, 23, 42, 0.94); border-bottom-color: rgba(51, 65, 85, 0.8); }
+        html[data-theme="dark"] .burger span { background-color: #f1f5f9; }
+        html[data-theme="dark"] .hero { background: radial-gradient(circle at 90% 10%, rgba(59, 130, 246, 0.15) 0%, transparent 60%); }
+        html[data-theme="dark"] .hero__card { background: rgba(30, 41, 59, 0.95); border-color: #334155; }
+        html[data-theme="dark"] .feature-card, html[data-theme="dark"] .car-card, html[data-theme="dark"] .instructor-card, html[data-theme="dark"] .price-card, html[data-theme="dark"] .blog-card { background: #1e293b; border-color: #334155; }
+        html[data-theme="dark"] .car-card__image-container, html[data-theme="dark"] .instructor-card__image-wrapper { background-color: #0f172a; }
+        html[data-theme="dark"] .filter-btn { background-color: #1e293b; color: #cbd5e1; border-color: #334155; }
+        html[data-theme="dark"] .modal { background: #1e293b; }
+        html[data-theme="dark"] .modal__close { background: #0f172a; color: #cbd5e1; }
+        html[data-theme="dark"] .editor-modal__header, html[data-theme="dark"] .editor-modal__footer { background: #0f172a; }
+        html[data-theme="dark"] .form-input, html[data-theme="dark"] .editor-field input, html[data-theme="dark"] .editor-field textarea, html[data-theme="dark"] .editor-field select { background: #0f172a; color: #f1f5f9; border-color: #334155; }
+        html[data-theme="dark"] .car-edit-item { background: #0f172a; border-color: #334155; }
+        html[data-theme="dark"] .admin-panel { background: #1e293b; }
+        html[data-theme="dark"] .admin-panel__body { background: #1e293b; }
+        html[data-theme="dark"] .admin-menu__item { background: #0f172a; border-color: #334155; color: #cbd5e1; }
+        html[data-theme="dark"] .admin-menu__item:hover { background: rgba(59, 130, 246, 0.12); color: #60a5fa; }
+        html[data-theme="dark"] .admin-panel__footer { border-top-color: #334155; }
+        html[data-theme="dark"] .bg-light { background-color: #1e293b; }
+        html[data-theme="dark"] .toast { background: #f1f5f9; color: #0f172a; }
+        html[data-theme="dark"] .toast i { color: #059669; }
+        html[data-theme="dark"] .nav { background-color: #0f172a; }
+        html[data-theme="dark"] .blog__empty { background: #1e293b; border-color: #334155; }
+
+        .theme-options { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+        .theme-option { border: 2px solid var(--border); border-radius: var(--radius-md); padding: 16px 10px; background: var(--bg-white); cursor: pointer; transition: var(--transition); text-align: center; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+        .theme-option:hover { border-color: var(--primary-light); transform: translateY(-3px); }
+        .theme-option.active { border-color: var(--primary); background: var(--primary-bg); box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.15); }
+        .theme-option__icon { font-size: 1.6rem; color: var(--primary); }
+        .theme-option__label { font-size: 0.85rem; font-weight: 700; color: var(--dark); }
+
+        .blog__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        .blog-card { background: var(--bg-white); border-radius: var(--radius-lg); border: 1px solid var(--border); overflow: hidden; transition: var(--transition); display: flex; flex-direction: column; }
+        .blog-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: var(--primary-light); }
+        .blog-card__media { position: relative; height: 220px; background: #f1f5f9; overflow: hidden; }
+        .blog-card__media img, .blog-card__media iframe { width: 100%; height: 100%; object-fit: cover; border: 0; display: block; }
+        .blog-card__media-badge { position: absolute; top: 14px; left: 14px; background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(4px); color: #fff; padding: 4px 12px; border-radius: var(--radius-full); font-size: 0.75rem; font-weight: 700; display: flex; align-items: center; gap: 6px; }
+        .blog-card__body { padding: 22px 24px 24px; display: flex; flex-direction: column; flex: 1; }
+        .blog-card__date { font-size: 0.78rem; color: var(--text-light); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px; }
+        .blog-card__title { font-size: 1.2rem; font-weight: 800; color: var(--dark); line-height: 1.3; margin-bottom: 10px; }
+        .blog-card__excerpt { font-size: 0.92rem; color: var(--text); margin-bottom: 18px; flex: 1; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+        .blog-card__actions { display: flex; gap: 10px; align-items: center; }
+        .blog-card__read { color: var(--primary); font-weight: 700; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 6px; cursor: pointer; background: none; border: none; padding: 0; font-family: inherit; }
+        .blog-card__read:hover { gap: 10px; }
+        .blog-card__admin-btns { display: flex; gap: 8px; margin-left: auto; }
+        .blog-card__admin-btn { width: 34px; height: 34px; border-radius: var(--radius-md); border: 1px solid var(--border); background: var(--bg-light); color: var(--dark-muted); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; transition: var(--transition); }
+        .blog-card__admin-btn:hover { transform: translateY(-2px); }
+        .blog-card__admin-btn--edit:hover { background: var(--primary-bg); color: var(--primary); border-color: var(--primary-light); }
+        .blog-card__admin-btn--delete:hover { background: #fef2f2; color: #dc2626; border-color: #fecaca; }
+
+        .blog__empty { text-align: center; padding: 60px 20px; background: var(--bg-light); border-radius: var(--radius-lg); border: 2px dashed var(--border); }
+        .blog__empty i { font-size: 3rem; color: var(--text-light); margin-bottom: 16px; display: block; }
+        .blog__empty h3 { color: var(--dark); margin-bottom: 8px; font-size: 1.2rem; }
+        .blog__empty p { color: var(--text); font-size: 0.95rem; }
+
+        .post-view { max-width: 780px; padding: 0; overflow: hidden; }
+        .post-view__media { width: 100%; max-height: 420px; background: #000; overflow: hidden; }
+        .post-view__media img { width: 100%; height: auto; max-height: 420px; object-fit: contain; margin: 0 auto; }
+        .post-view__media iframe { width: 100%; height: 420px; border: 0; display: block; }
+        .post-view__body { padding: 28px 32px 32px; }
+        .post-view__date { font-size: 0.8rem; color: var(--text-light); font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px; }
+        .post-view__title { font-size: 1.6rem; font-weight: 800; color: var(--dark); line-height: 1.25; margin-bottom: 18px; }
+        .post-view__text { font-size: 1rem; color: var(--text); line-height: 1.7; white-space: pre-wrap; }
+
+        .blog-edit-item { border: 1px solid var(--border); border-radius: var(--radius-md); padding: 16px; margin-bottom: 14px; background: var(--bg-light); }
+        .blog-edit-item__header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+        .blog-edit-item__num { font-weight: 800; color: var(--primary); font-size: 0.85rem; }
+        .blog-edit-item__actions { display: flex; gap: 8px; }
+        .blog-edit-item__btn { padding: 6px 12px; border-radius: var(--radius-md); font-size: 0.8rem; font-weight: 700; cursor: pointer; transition: var(--transition); border: 1px solid var(--border); background: var(--bg-white); color: var(--dark-muted); }
+        .blog-edit-item__btn:hover { transform: translateY(-2px); }
+        .blog-edit-item__btn--delete { background: #fef2f2; color: #dc2626; border-color: #fecaca; }
+        .blog-edit-item__btn--delete:hover { background: #dc2626; color: #fff; }
+        .blog-edit-item__btn--edit { background: var(--primary-bg); color: var(--primary); border-color: var(--primary-light); }
+        .blog-edit-item__btn--edit:hover { background: var(--primary); color: #fff; }
+
+        @media (max-width: 1024px) {
+            .hero__title { font-size: 2.6rem; }
+            .features__grid, .pricing__grid, .fleet__grid, .instructors__grid, .blog__grid { grid-template-columns: repeat(2, 1fr); }
+            .footer__container { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .section { padding: 60px 0; }
+            .burger { display: flex; }
+            .nav { position: fixed; top: 80px; left: -100%; width: 100%; height: calc(100vh - 80px); background-color: var(--bg-white); padding: 40px; transition: var(--transition); box-shadow: var(--shadow-lg); }
+            .nav.active { left: 0; }
+            .nav__list { flex-direction: column; align-items: flex-start; gap: 24px; }
+            .nav__link { font-size: 1.2rem; }
+            .header__phone span { display: none; }
+            .hero { padding-top: 120px; }
+            .hero__container { grid-template-columns: 1fr; gap: 40px; }
+            .hero__title { font-size: 2.2rem; }
+            .hero__card--top, .hero__card--bottom { display: none; }
+            .features__grid, .fleet__grid, .instructors__grid, .pricing__grid, .footer__container, .blog__grid { grid-template-columns: 1fr; }
+            .price-card--popular { padding-top: 48px; }
+            .gis-card { flex-direction: column; text-align: center; padding: 20px; }
+            .footer__bottom-container { flex-direction: column; gap: 10px; text-align: center; }
+            .admin-panel { width: 100%; right: -100%; }
+            .btn--login span { display: none; }
+            .btn--login { padding: 8px 12px; }
+            .theme-options { grid-template-columns: 1fr; }
+            .post-view__body { padding: 20px; }
+            .post-view__media iframe { height: 220px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header" id="header">
+        <div class="container header__container">
+            <a href="#hero" class="logo">
+                <img src="logo.png" alt="DriveSchool.kz Логотип" class="logo__img">
+                <span class="logo__text">DriveSchool<span class="logo__accent">.kz</span></span>
+            </a>
+
+            <nav class="nav" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="#hero" class="nav__link active">Главная</a></li>
+                    <li class="nav__item"><a href="#fleet" class="nav__link">Автопарк</a></li>
+                    <li class="nav__item"><a href="#instructors" class="nav__link">Инструкторы</a></li>
+                    <li class="nav__item"><a href="#pricing" class="nav__link">Тарифы</a></li>
+                    <li class="nav__item"><a href="#blog" class="nav__link">Блог</a></li>
+                    <li class="nav__item"><a href="#reviews" class="nav__link">Отзывы</a></li>
+                    <li class="nav__item"><a href="#contacts" class="nav__link">Контакты</a></li>
+                </ul>
+            </nav>
+
+            <div class="header__actions">
+                <a href="tel:+77774414888" class="header__phone">
+                    <i class="fa-solid fa-phone"></i>
+                    <span>+7 (777) 441-48-88</span>
+                </a>
+                <a href="https://wa.me/77774414888" target="_blank" rel="noopener" class="btn btn--whatsapp btn--sm">
+                    <i class="fa-brands fa-whatsapp"></i>
+                    <span>WhatsApp</span>
+                </a>
+                <button class="btn btn--login" id="header-login-btn" title="Войти в кабинет">
+                    <i class="fa-solid fa-user"></i>
+                    <span>Войти</span>
+                </button>
+                <button class="burger" id="burger-toggle" aria-label="Открыть меню">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero" id="hero">
+            <div class="container hero__container">
+                <div class="hero__content">
+                    <div class="badge">
+                        <i class="fa-solid fa-fire badge__icon"></i> Набор в новые группы открыт
+                    </div>
+                    <h1 class="hero__title">
+                        Научим водить <span class="text-gradient">уверенно</span> и <span class="text-gradient">безопасно</span>
+                    </h1>
+                    <p class="hero__subtitle">
+                        Обучение вождению категории B на автоматической и механической коробках передач. Подготовка к сдаче экзамена в ЦОНе с первого раза!
+                    </p>
+                    <div class="hero__btns">
+                        <a href="https://wa.me/77774414888?text=Здравствуйте!%20Хочу%20записаться%20на%20курс%20в%20DriveSchool.kz" target="_blank" rel="noopener" class="btn btn--whatsapp btn--lg">
+                            <i class="fa-brands fa-whatsapp"></i>
+                            <span>Записаться через WhatsApp</span>
+                        </a>
+                    </div>
+
+                    <div class="hero__stats">
+                        <div class="stat-item">
+                            <span class="stat-item__number">98%</span>
+                            <span class="stat-item__label">Сдача с первого раза</span>
+                        </div>
+                        <div class="stat-divider"></div>
+                        <div class="stat-item">
+                            <span class="stat-item__number">12+</span>
+                            <span class="stat-item__label">Лет успешного опыта</span>
+                        </div>
+                        <div class="stat-divider"></div>
+                        <div class="stat-item">
+                            <span class="stat-item__number">5 000+</span>
+                            <span class="stat-item__label">Выпускников с правами</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero__image-wrapper">
+                    <div class="hero__card hero__card--top">
+                        <i class="fa-solid fa-shield-halved"></i>
+                        <div>
+                            <strong>100% Безопасность</strong>
+                            <span>Двойные педали на всех авто</span>
+                        </div>
+                    </div>
+                    <img src="placeholder-hero.jpg" alt="Обучение вождению в DriveSchool.kz" class="hero__image" onerror="this.src='https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=800&q=80'">
+                    <div class="hero__card hero__card--bottom">
+                        <div class="rating-stars">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <strong>4.9 из 5.0</strong>
+                        <span>Рейтинг на основе отзывов</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="features section bg-light">
+            <div class="container">
+                <div class="features__grid">
+                    <div class="feature-card">
+                        <div class="feature-card__icon"><i class="fa-solid fa-calendar-check"></i></div>
+                        <h3 class="feature-card__title">Удобное время</h3>
+                        <p class="feature-card__text">Утренние, дневные и вечерние группы с 09:00 до 18:00 (Пн - Пт).</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-card__icon"><i class="fa-solid fa-credit-card"></i></div>
+                        <h3 class="feature-card__title">Рассрочка 0%</h3>
+                        <p class="feature-card__text">Оплата частями без переплат и скрытых комиссий на весь период.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-card__icon"><i class="fa-solid fa-route"></i></div>
+                        <h3 class="feature-card__title">Маршруты ЦОН</h3>
+                        <p class="feature-card__text">Отработка реальных экзаменационных автодромов и городских маршрутов.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-card__icon"><i class="fa-solid fa-user-shield"></i></div>
+                        <h3 class="feature-card__title">Терпеливые инструкторы</h3>
+                        <p class="feature-card__text">Вежливые специалисты со стажем преподавания от 7 лет.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="fleet section" id="fleet">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-subtitle">Современный транспорт</span>
+                    <h2 class="section-title">Наш автопарк</h2>
+                    <p class="section-description">Все автомобили проходят регулярное ТО, оснащены дублирующими педалями и кондиционерами.</p>
+                </div>
+
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">Все авто</button>
+                    <button class="filter-btn" data-filter="akpp">АКПП (Автомат)</button>
+                    <button class="filter-btn" data-filter="mkpp">МКПП (Механика)</button>
+                </div>
+
+                <div class="fleet__grid">
+                    <div class="car-card" data-category="akpp">
+                        <div class="car-card__image-container">
+                            <span class="car-card__badge badge--akpp">АКПП</span>
+                            <img src="placeholder-car.jpg" alt="Фото машины Hyundai Accent" class="car-card__image" onerror="this.src='https://images.unsplash.com/photo-1590362891991-f776e747a588?auto=format&fit=crop&w=600&q=80'">
+                        </div>
+                        <div class="car-card__body">
+                            <h3 class="car-card__title">Hyundai Accent (2023)</h3>
+                            <div class="car-card__specs">
+                                <div class="spec-item"><i class="fa-solid fa-gear"></i> Коробка: <strong>Автомат (АКПП)</strong></div>
+                                <div class="spec-item"><i class="fa-solid fa-snowflake"></i> Климат-контроль: <strong>Есть</strong></div>
+                                <div class="spec-item"><i class="fa-solid fa-circle-check"></i> Дублирующие педали: <strong>Да</strong></div>
+                            </div>
+                            <a href="https://wa.me/77774414888?text=Здравствуйте!%20Хочу%20обучаться%20на%20Hyundai%20Accent%20АКПП" target="_blank" rel="noopener" class="btn btn--whatsapp btn--full">
+                                <i class="fa-brands fa-whatsapp"></i>
+                                <span>Выбрать на WhatsApp</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="car-card" data-category="mkpp">
+                        <div class="car-card__image-container">
+                            <span class="car-card__badge badge--mkpp">МКПП</span>
+                            <img src="placeholder-car.jpg" alt="Фото машины Kia Rio" class="car-card__image" onerror="this.src='https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=600&q=80'">
+                        </div>
+                        <div class="car-card__body">
+                            <h3 class="car-card__title">Kia Rio (2022)</h3>
+                            <div class="car-card__specs">
+                                <div class="spec-item"><i class="fa-solid fa-gear"></i> Коробка: <strong>Механика (МКПП)</strong></div>
+                                <div class="spec-item"><i class="fa-solid fa-snowflake"></i> Кондиционер: <strong>Есть</strong></div>
+                                <div class="spec-item"><i class="fa-solid fa-circle-check"></i> Дублирующие педали: <strong>Да</strong></div>
+                            </div>
+                            <a href="https://wa.me/77774414888?text=Здравствуйте!%20Хочу%20обучаться%20на%20Kia%20Rio%20МКПП" target="_blank" rel="noopener" class="btn btn--whatsapp btn--full">
+                                <i class="fa-brands fa-whatsapp"></i>
+                                <span>Выбрать на WhatsApp</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="car-card" data-category="akpp">
+                        <div class="car-card__image-container">
+                            <span class="car-card__badge badge--akpp">АКПП</span>
+                            <img src="placeholder-car.jpg" alt="Фото машины Toyota Corolla" class="car-card__image" onerror="this.src='https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?auto=format&fit=crop&w=600&q=80'">
+                        </div>
+                        <div class="car-card__body">
+                            <h3 class="car-card__title">Toyota Corolla (2023)</h3>
+                            <div class="car-card__specs">
+                                <div class="spec-item"><i class="fa-solid fa-gear"></i> Коробка: <strong>Автомат (АКПП)</strong></div>
+                                <div class="spec-item"><i class="fa-solid fa-snowflake"></i> Климат-контроль: <strong>Есть</strong></div>
+                                <div class="spec-item"><i class="fa-solid fa-circle-check"></i> Дублирующие педали: <strong>Да</strong></div>
+                            </div>
+                            <a href="https://wa.me/77774414888?text=Здравствуйте!%20Хочу%20обучаться%20на%20Toyota%20Corolla%20АКПП" target="_blank" rel="noopener" class="btn btn--whatsapp btn--full">
+                                <i class="fa-brands fa-whatsapp"></i>
+                                <span>Выбрать на WhatsApp</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="instructors section bg-light" id="instructors">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-subtitle">Профессионалы своего дела</span>
+                    <h2 class="section-title">Опытные инструкторы</h2>
+                    <p class="section-description">Наши наставники найдут подход к каждому ученику и научат действовать спокойно в любых ситуациях.</p>
+                </div>
+
+                <div class="instructors__grid">
+                    <div class="instructor-card">
+                        <div class="instructor-card__image-wrapper">
+                            <img src="placeholder-instructor.jpg" alt="Фото инструктора — Арман Сериков" class="instructor-card__image" onerror="this.src='https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=500&q=80'">
+                            <span class="instructor-card__experience">Стаж: 12 лет</span>
+                        </div>
+                        <div class="instructor-card__info">
+                            <h3 class="instructor-card__name">Арман Сериков</h3>
+                            <span class="instructor-card__role">Старший инструктор (МКПП / АКПП)</span>
+                            <p class="instructor-card__desc">Специализируется на преодолении страха вождения и подготовке к успешной сдаче экзаменов в ЦОНе.</p>
+                            <div class="instructor-card__rating">
+                                <i class="fa-solid fa-star"></i> <span>4.95 / 5.0 (140+ учеников)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="instructor-card">
+                        <div class="instructor-card__image-wrapper">
+                            <img src="placeholder-instructor.jpg" alt="Фото инструктора — Елена Смирнова" class="instructor-card__image" onerror="this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=500&q=80'">
+                            <span class="instructor-card__experience">Стаж: 8 лет</span>
+                        </div>
+                        <div class="instructor-card__info">
+                            <h3 class="instructor-card__name">Елена Смирнова</h3>
+                            <span class="instructor-card__role">Инструктор (АКПП)</span>
+                            <p class="instructor-card__desc">Мастер контраварийной подготовки и вежливого методичного обучения вождению в плотном городском потоке.</p>
+                            <div class="instructor-card__rating">
+                                <i class="fa-solid fa-star"></i> <span>4.98 / 5.0 (110+ учеников)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="instructor-card">
+                        <div class="instructor-card__image-wrapper">
+                            <img src="placeholder-instructor.jpg" alt="Фото инструктора — Данияр Ахметов" class="instructor-card__image" onerror="this.src='https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=500&q=80'">
+                            <span class="instructor-card__experience">Стаж: 15 лет</span>
+                        </div>
+                        <div class="instructor-card__info">
+                            <h3 class="instructor-card__name">Данияр Ахметов</h3>
+                            <span class="instructor-card__role">Инструктор (МКПП)</span>
+                            <p class="instructor-card__desc">Эксперт по маневрированию и парковке в сложных условиях. Отличные результаты сдачи с первого раза.</p>
+                            <div class="instructor-card__rating">
+                                <i class="fa-solid fa-star"></i> <span>4.92 / 5.0 (180+ учеников)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="pricing section" id="pricing">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-subtitle">Прайс-лист DriveSchool.kz</span>
+                    <h2 class="section-title">Тарифы обучения</h2>
+                    <p class="section-description">Выбирайте удобный формат теоретических и практических занятий</p>
+                </div>
+
+                <div class="pricing__grid">
+                    <div class="price-card">
+                        <div class="price-card__header">
+                            <h3 class="price-card__title">Онлайн занятия</h3>
+                            <div class="price-card__amount">от 59 000 ₸</div>
+                            <span class="price-card__sub">Изучение теории ПДД в любое удобное время</span>
+                        </div>
+                        <ul class="price-card__list">
+                            <li><i class="fa-solid fa-check"></i> Доступ к онлайн-платформе и приложению</li>
+                            <li><i class="fa-solid fa-check"></i> Видеоуроки, тесты и экзаменационные билеты</li>
+                            <li><i class="fa-solid fa-check"></i> Консультации с преподавателем онлайн</li>
+                            <li><i class="fa-solid fa-check"></i> Подготовка полного пакета документов</li>
+                        </ul>
+                        <a href="https://wa.me/77774414888?text=Здравствуйте!%20Хочу%20записаться%20на%20онлайн%20занятия" target="_blank" rel="noopener" class="btn btn--whatsapp btn--full">
+                            <i class="fa-brands fa-whatsapp"></i>
+                            <span>Записаться в WhatsApp</span>
+                        </a>
+                    </div>
+
+                    <div class="price-card price-card--popular">
+                        <div class="popular-badge">Популярный выбор</div>
+                        <div class="price-card__header">
+                            <h3 class="price-card__title">Оффлайн занятия</h3>
+                            <div class="price-card__amount">от 84 000 ₸</div>
+                            <span class="price-card__sub">Очные уроки с преподавателем в классе</span>
+                        </div>
+                        <ul class="price-card__list">
+                            <li><i class="fa-solid fa-check"></i> Занятия в оборудованных учебных классах</li>
+                            <li><i class="fa-solid fa-check"></i> Живое общение и подробный разбор ПДД</li>
+                            <li><i class="fa-solid fa-check"></i> Симуляция экзаменационных тестов ЦОН</li>
+                            <li><i class="fa-solid fa-check"></i> Сопровождение и регистрация в базе</li>
+                        </ul>
+                        <a href="https://wa.me/77774414888?text=Здравствуйте!%20Хочу%20записаться%20на%20оффлайн%20занятия" target="_blank" rel="noopener" class="btn btn--whatsapp btn--full">
+                            <i class="fa-brands fa-whatsapp"></i>
+                            <span>Записаться в WhatsApp</span>
+                        </a>
+                    </div>
+
+                    <div class="price-card">
+                        <div class="price-card__header">
+                            <h3 class="price-card__title">Практика вождения</h3>
+                            <div class="price-card__amount">5 000 ₸ <span class="price-unit">/ 1 акад. час</span></div>
+                            <span class="price-card__sub">Или <strong>10 000 ₸</strong> за 90 минут полноценного занятия</span>
+                        </div>
+                        <ul class="price-card__list">
+                            <li><i class="fa-solid fa-check"></i> Индивидуальные уроки с инструктором</li>
+                            <li><i class="fa-solid fa-check"></i> Выбор АКПП (автомат) или МКПП (механика)</li>
+                            <li><i class="fa-solid fa-check"></i> Отработка автодрома и городских маршрутов ЦОН</li>
+                            <li><i class="fa-solid fa-check"></i> Топливо и бензин включены в стоимость</li>
+                        </ul>
+                        <a href="https://wa.me/77774414888?text=Здравствуйте!%20Хочу%20записаться%20на%20практику%20вождения" target="_blank" rel="noopener" class="btn btn--whatsapp btn--full">
+                            <i class="fa-brands fa-whatsapp"></i>
+                            <span>Записаться в WhatsApp</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="blog section bg-light" id="blog">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-subtitle">Наши новости и статьи</span>
+                    <h2 class="section-title">Личный блог</h2>
+                    <p class="section-description">Полезные советы, истории учеников, обновления автошколы и свежие видео с занятий.</p>
+                </div>
+
+                <div class="blog__grid" id="blog-grid"></div>
+            </div>
+        </section>
+
+        <section class="reviews section" id="reviews">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-subtitle">Честные оценки</span>
+                    <h2 class="section-title">Отзывы наших учеников</h2>
+                    <p class="section-description">Мы гордимся доверием наших выпускников. Ознакомьтесь с реальным рейтингом и отзывами в 2ГИС.</p>
+                </div>
+
+                <div id="2gis-widget-container" class="gis-widget-wrapper">
+                    <div class="gis-card">
+                        <div class="gis-card__info">
+                            <div class="gis-card__badge-tag"><i class="fa-solid fa-location-dot"></i> 2ГИС Оценка</div>
+                            <h3 class="gis-card__title">DriveSchool.kz в 2ГИС</h3>
+                            <p class="gis-card__sub">Официальный рейтинговый виджет организации</p>
+                        </div>
+                        <div class="gis-card__widget-box">
+                            <iframe frameborder="0" width="150px" height="50px" src="https://widget.2gis.ru/api/widget?org_id=70000001116301566&amp;branch_id=70000001116301567&amp;size=medium&amp;theme=dark" style="border: 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer" id="contacts">
+        <div class="container footer__container">
+            <div class="footer__brand">
+                <a href="#hero" class="logo logo--footer">
+                    <img src="logo.png" alt="DriveSchool.kz Логотип" class="logo__img logo__img--footer">
+                    <span class="logo__text">DriveSchool<span class="logo__accent">.kz</span></span>
+                </a>
+                <p class="footer__desc">Современная автошкола в Казахстане. Обучаем уверенному и безопасному вождению с гарантией результата.</p>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/driveschool.kz?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="social-link social-link--insta" title="Instagram" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://wa.me/77774414888" class="social-link social-link--wa" title="WhatsApp" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>
+
+                <div class="footer__theme">
+                    <span class="footer__theme-label">Тема оформления:</span>
+                    <button class="theme-toggle" id="theme-toggle" title="Сменить тему" aria-label="Сменить тему">
+                        <i class="fa-solid fa-moon icon-moon"></i>
+                        <i class="fa-solid fa-sun icon-sun"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="footer__contacts">
+                <h3 class="footer__title">Контакты</h3>
+                <ul class="contacts-list">
+                    <li><i class="fa-solid fa-location-dot"></i><span>Улица Айнакол 155</span></li>
+                    <li><i class="fa-solid fa-phone"></i><a href="tel:+77774414888">+7 (777) 441-48-88</a></li>
+                    <li><i class="fa-brands fa-whatsapp"></i><a href="https://wa.me/77774414888" target="_blank" rel="noopener">+7 (777) 441-48-88 (WhatsApp)</a></li>
+                    <li><i class="fa-brands fa-instagram"></i><a href="https://www.instagram.com/driveschool.kz?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener">@driveschool.kz (Instagram)</a></li>
+                    <li><i class="fa-solid fa-clock"></i><span>Пн - Пт: 09:00 - 18:00 (Сб - Вс: выходной)</span></li>
+                </ul>
+            </div>
+
+            <div class="footer__links">
+                <h3 class="footer__title">Навигация</h3>
+                <ul>
+                    <li><a href="#hero">Главная</a></li>
+                    <li><a href="#fleet">Автопарк</a></li>
+                    <li><a href="#instructors">Инструкторы</a></li>
+                    <li><a href="#pricing">Тарифы</a></li>
+                    <li><a href="#blog">Блог</a></li>
+                    <li><a href="#reviews">Отзывы</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer__bottom">
+            <div class="container footer__bottom-container">
+                <p>&copy; 2026 DriveSchool.kz. Все права защищены.</p>
+                <a href="#" class="privacy-link">Политика конфиденциальности</a>
+            </div>
+        </div>
+    </footer>
+
+    <div class="modal-overlay" id="editor-pricing">
+        <div class="modal editor-modal">
+            <div class="editor-modal__header">
+                <div class="editor-modal__title"><i class="fa-solid fa-tags"></i> Управление ценами</div>
+                <button class="modal__close" data-close-editor style="position:static;"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="editor-modal__body">
+                <div class="editor-section-title">Онлайн занятия</div>
+                <div class="editor-row">
+                    <div class="editor-field"><label>Цена</label><input type="text" id="edit-price-online"></div>
+                    <div class="editor-field"><label>Подзаголовок</label><input type="text" id="edit-sub-online"></div>
+                </div>
+                <div class="editor-section-title">Оффлайн занятия</div>
+                <div class="editor-row">
+                    <div class="editor-field"><label>Цена</label><input type="text" id="edit-price-offline"></div>
+                    <div class="editor-field"><label>Подзаголовок</label><input type="text" id="edit-sub-offline"></div>
+                </div>
+                <div class="editor-section-title">Практика вождения</div>
+                <div class="editor-row">
+                    <div class="editor-field"><label>Цена за академический час</label><input type="text" id="edit-price-practice"></div>
+                    <div class="editor-field"><label>Подзаголовок</label><input type="text" id="edit-sub-practice"></div>
+                </div>
+            </div>
+            <div class="editor-modal__footer">
+                <button class="btn btn--outline" data-close-editor>Отмена</button>
+                <button class="btn editor-save-btn" id="save-pricing"><i class="fa-solid fa-floppy-disk"></i><span>Сохранить цены</span></button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="editor-fleet">
+        <div class="modal editor-modal">
+            <div class="editor-modal__header">
+                <div class="editor-modal__title"><i class="fa-solid fa-car"></i> Управление автопарком</div>
+                <button class="modal__close" data-close-editor style="position:static;"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="editor-modal__body">
+                <div id="fleet-edit-container"></div>
+                <button class="btn btn--outline btn--full" id="add-car-btn" style="margin-top:10px;">
+                    <i class="fa-solid fa-plus"></i><span>Добавить машину</span>
+                </button>
+            </div>
+            <div class="editor-modal__footer">
+                <button class="btn btn--outline" data-close-editor>Отмена</button>
+                <button class="btn editor-save-btn" id="save-fleet"><i class="fa-solid fa-floppy-disk"></i><span>Сохранить автопарк</span></button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="editor-whatsapp">
+        <div class="modal editor-modal" style="max-width:520px;">
+            <div class="editor-modal__header">
+                <div class="editor-modal__title"><i class="fa-brands fa-whatsapp"></i> Настройки WhatsApp</div>
+                <button class="modal__close" data-close-editor style="position:static;"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="editor-modal__body">
+                <div class="editor-field"><label>Номер WhatsApp (только цифры)</label><input type="text" id="edit-whatsapp"></div>
+                <div class="editor-field"><label>Отображаемый номер</label><input type="text" id="edit-phone-display"></div>
+                <div class="editor-field"><label>Текст сообщения по умолчанию</label><textarea id="edit-whatsapp-text"></textarea></div>
+            </div>
+            <div class="editor-modal__footer">
+                <button class="btn btn--outline" data-close-editor>Отмена</button>
+                <button class="btn editor-save-btn" id="save-whatsapp"><i class="fa-solid fa-floppy-disk"></i><span>Сохранить</span></button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="editor-theme">
+        <div class="modal editor-modal" style="max-width:520px;">
+            <div class="editor-modal__header">
+                <div class="editor-modal__title"><i class="fa-solid fa-palette"></i> Тема оформления</div>
+                <button class="modal__close" data-close-editor style="position:static;"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="editor-modal__body">
+                <p style="font-size:0.9rem; color:var(--text); margin-bottom:20px;">Выберите внешний вид сайта.</p>
+                <div class="theme-options">
+                    <button class="theme-option" data-theme-choice="light"><i class="fa-solid fa-sun theme-option__icon"></i><span class="theme-option__label">Светлая</span></button>
+                    <button class="theme-option" data-theme-choice="dark"><i class="fa-solid fa-moon theme-option__icon"></i><span class="theme-option__label">Тёмная</span></button>
+                    <button class="theme-option" data-theme-choice="system"><i class="fa-solid fa-circle-half-stroke theme-option__icon"></i><span class="theme-option__label">Системная</span></button>
+                </div>
+            </div>
+            <div class="editor-modal__footer">
+                <button class="btn btn--outline" data-close-editor>Закрыть</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="editor-blog">
+        <div class="modal editor-modal">
+            <div class="editor-modal__header">
+                <div class="editor-modal__title"><i class="fa-solid fa-blog"></i> Личный блог</div>
+                <button class="modal__close" data-close-editor style="position:static;"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="editor-modal__body">
+                <div id="blog-edit-container"></div>
+                <button class="btn btn--outline btn--full" id="add-post-btn" style="margin-top:10px;">
+                    <i class="fa-solid fa-plus"></i><span>Добавить пост</span>
+                </button>
+            </div>
+            <div class="editor-modal__footer">
+                <button class="btn btn--outline" data-close-editor>Закрыть</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="editor-post">
+        <div class="modal editor-modal" style="max-width:640px;">
+            <div class="editor-modal__header">
+                <div class="editor-modal__title"><i class="fa-solid fa-pen"></i> <span id="post-modal-title">Новый пост</span></div>
+                <button class="modal__close" data-close-editor style="position:static;"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="editor-modal__body">
+                <div class="editor-field"><label>Заголовок поста *</label><input type="text" id="post-title"></div>
+                <div class="editor-row">
+                    <div class="editor-field"><label>Дата</label><input type="date" id="post-date"></div>
+                    <div class="editor-field">
+                        <label>Тип медиа</label>
+                        <select id="post-media-type">
+                            <option value="image">Фото</option>
+                            <option value="video">Видео (YouTube)</option>
+                            <option value="none">Без медиа</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="editor-field" id="post-image-field">
+                    <label>Ссылка на фото (URL)</label>
+                    <input type="text" id="post-image" placeholder="https://example.com/photo.jpg">
+                    <img id="post-image-preview" class="car-edit-item__preview" style="display:none;">
+                </div>
+                <div class="editor-field" id="post-video-field" style="display:none;">
+                    <label>Ссылка на YouTube-видео</label>
+                    <input type="text" id="post-video" placeholder="https://www.youtube.com/watch?v=...">
+                </div>
+                <div class="editor-field"><label>Текст поста *</label><textarea id="post-text" rows="8"></textarea></div>
+            </div>
+            <div class="editor-modal__footer">
+                <button class="btn btn--outline" data-close-editor>Отмена</button>
+                <button class="btn editor-save-btn" id="save-post"><i class="fa-solid fa-floppy-disk"></i><span>Сохранить пост</span></button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="post-view">
+        <div class="modal post-view">
+            <button class="modal__close" data-close-editor style="position:absolute; top:14px; right:14px; z-index:10; background:rgba(255,255,255,0.9);"><i class="fa-solid fa-xmark"></i></button>
+            <div class="post-view__media" id="post-view-media"></div>
+            <div class="post-view__body">
+                <div class="post-view__date" id="post-view-date"></div>
+                <h2 class="post-view__title" id="post-view-title"></h2>
+                <div class="post-view__text" id="post-view-text"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast" id="toast">
+        <i class="fa-solid fa-circle-check"></i>
+        <span id="toast-text">Сохранено!</span>
+    </div>
+
+    <div class="modal-overlay" id="login-modal">
+        <div class="modal">
+            <button class="modal__close" id="login-modal-close"><i class="fa-solid fa-xmark"></i></button>
+            <div class="modal__icon"><i class="fa-solid fa-user-lock"></i></div>
+            <h2 class="modal__title">Вход в кабинет</h2>
+            <p class="modal__subtitle">Введите логин и пароль администратора</p>
+            <div class="form-error" id="login-error"><i class="fa-solid fa-circle-exclamation"></i><span>Неверный логин или пароль</span></div>
+            <form id="login-form">
+                <div class="form-group"><label for="login-username">Логин</label><input type="text" id="login-username" class="form-input" placeholder="admin" required></div>
+                <div class="form-group"><label for="login-password">Пароль</label><input type="password" id="login-password" class="form-input" placeholder="••••••••" required></div>
+                <button type="submit" class="btn btn--primary btn--lg btn--full"><i class="fa-solid fa-right-to-bracket"></i><span>Войти</span></button>
+            </form>
+            <p style="text-align:center; margin-top:16px; font-size:0.8rem; color:var(--text-light);">По умолчанию: <strong>admin</strong> / <strong>admin123</strong></p>
+        </div>
+    </div>
+
+    <div class="admin-overlay" id="admin-overlay"></div>
+    <aside class="admin-panel" id="admin-panel">
+        <div class="admin-panel__header">
+            <div class="admin-panel__user">
+                <div class="admin-panel__avatar" id="admin-avatar">A</div>
+                <div>
+                    <div class="admin-panel__name" id="admin-name">admin</div>
+                    <div class="admin-panel__role">Администратор</div>
+                </div>
+            </div>
+            <button class="modal__close" id="admin-panel-close" style="background:rgba(255,255,255,0.15); color:#fff;"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="admin-panel__body">
+            <div class="admin-menu">
+                <button class="admin-menu__item" data-admin-action="pricing"><i class="fa-solid fa-tags"></i><span>Управление ценами</span></button>
+                <button class="admin-menu__item" data-admin-action="fleet"><i class="fa-solid fa-car"></i><span>Управление автопарком</span></button>
+                <button class="admin-menu__item" data-admin-action="whatsapp"><i class="fa-brands fa-whatsapp"></i><span>Настройки WhatsApp</span></button>
+                <button class="admin-menu__item" data-admin-action="theme"><i class="fa-solid fa-moon"></i><span>Тема оформления</span></button>
+                <button class="admin-menu__item" data-admin-action="blog"><i class="fa-solid fa-blog"></i><span>Личный блог</span></button>
+                <button class="admin-menu__item admin-menu__item--logout" id="admin-logout"><i class="fa-solid fa-right-from-bracket"></i><span>Выйти</span></button>
+            </div>
+        </div>
+        <div class="admin-panel__footer">DriveSchool.kz © Панель администратора</div>
+    </aside>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Мобильное меню
+            const burgerToggle = document.getElementById('burger-toggle');
+            const navMenu = document.getElementById('nav-menu');
+            const navLinks = document.querySelectorAll('.nav__link');
+            if (burgerToggle && navMenu) {
+                burgerToggle.addEventListener('click', () => {
+                    navMenu.classList.toggle('active');
+                    burgerToggle.classList.toggle('active');
+                });
+                navLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        navMenu.classList.remove('active');
+                        burgerToggle.classList.remove('active');
+                    });
+                });
+            }
+
+            // 2. Фильтр автопарка
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    const filterValue = btn.getAttribute('data-filter');
+                    document.querySelectorAll('.car-card').forEach(card => {
+                        if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+
+            // ===== Шаг 1: Личный кабинет =====
+            const DEFAULT_CREDENTIALS = { username: 'admin', password: 'admin123' };
+            function getCredentials() {
+                const saved = localStorage.getItem('ds_credentials');
+                return saved ? JSON.parse(saved) : DEFAULT_CREDENTIALS;
+            }
+
+            const loginBtn = document.getElementById('header-login-btn');
+            const loginModal = document.getElementById('login-modal');
+            const loginModalClose = document.getElementById('login-modal-close');
+            const loginForm = document.getElementById('login-form');
+            const loginError = document.getElementById('login-error');
+            const adminPanel = document.getElementById('admin-panel');
+            const adminOverlay = document.getElementById('admin-overlay');
+            const adminPanelClose = document.getElementById('admin-panel-close');
+            const adminLogout = document.getElementById('admin-logout');
+            const adminName = document.getElementById('admin-name');
+            const adminAvatar = document.getElementById('admin-avatar');
+
+            if (loginBtn) {
+                loginBtn.addEventListener('click', () => {
+                    if (localStorage.getItem('ds_logged_in') === 'true') {
+                        openAdminPanel();
+                    } else {
+                        loginModal.classList.add('active');
+                        loginError.classList.remove('active');
+                        loginForm.reset();
+                    }
+                });
+            }
+            if (loginModalClose) loginModalClose.addEventListener('click', () => loginModal.classList.remove('active'));
+            if (loginModal) loginModal.addEventListener('click', (e) => { if (e.target === loginModal) loginModal.classList.remove('active'); });
+
+            function openAdminPanel() {
+                const creds = getCredentials();
+                const savedUser = localStorage.getItem('ds_logged_user') || creds.username;
+                adminName.textContent = savedUser;
+                adminAvatar.textContent = savedUser.charAt(0).toUpperCase();
+                adminPanel.classList.add('active');
+                adminOverlay.classList.add('active');
+                updateHeaderLoginBtn(true);
+            }
+            function closeAdminPanel() {
+                adminPanel.classList.remove('active');
+                adminOverlay.classList.remove('active');
+            }
+            if (adminPanelClose) adminPanelClose.addEventListener('click', closeAdminPanel);
+            if (adminOverlay) adminOverlay.addEventListener('click', closeAdminPanel);
+
+            function updateHeaderLoginBtn(isLoggedIn) {
+                if (!loginBtn) return;
+                loginBtn.innerHTML = isLoggedIn
+                    ? '<i class="fa-solid fa-user-check"></i><span>Кабинет</span>'
+                    : '<i class="fa-solid fa-user"></i><span>Войти</span>';
+            }
+
+            if (loginForm) {
+                loginForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const user = document.getElementById('login-username').value.trim();
+                    const pass = document.getElementById('login-password').value;
+                    const creds = getCredentials();
+                    if (user === creds.username && pass === creds.password) {
+                        localStorage.setItem('ds_logged_in', 'true');
+                        localStorage.setItem('ds_logged_user', user);
+                        loginError.classList.remove('active');
+                        loginModal.classList.remove('active');
+                        loginForm.reset();
+                        openAdminPanel();
+                        renderBlog();
+                    } else {
+                        loginError.classList.add('active');
+                        document.getElementById('login-password').value = '';
+                    }
+                });
+            }
+
+            if (adminLogout) {
+                adminLogout.addEventListener('click', () => {
+                    localStorage.removeItem('ds_logged_in');
+                    localStorage.removeItem('ds_logged_user');
+                    closeAdminPanel();
+                    updateHeaderLoginBtn(false);
+                    renderBlog();
+                });
+            }
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    if (loginModal.classList.contains('active')) loginModal.classList.remove('active');
+                    if (adminPanel.classList.contains('active')) closeAdminPanel();
+                }
+            });
+
+            if (localStorage.getItem('ds_logged_in') === 'true') updateHeaderLoginBtn(true);
+
+            // ===== Шаг 2: Настройки =====
+            function showToast(message) {
+                const toast = document.getElementById('toast');
+                const toastText = document.getElementById('toast-text');
+                if (!toast) return;
+                toastText.textContent = message;
+                toast.classList.add('active');
+                clearTimeout(window.__toastTimer);
+                window.__toastTimer = setTimeout(() => toast.classList.remove('active'), 2500);
+            }
+
+            const LS_PRICING = 'ds_pricing';
+            const LS_FLEET = 'ds_fleet';
+            const LS_WHATSAPP = 'ds_whatsapp';
+            const LS_BLOG = 'ds_blog';
+
+            const DEFAULT_PRICING = {
+                online:  { price: 'от 59 000 ₸', sub: 'Изучение теории ПДД в любое удобное время' },
+                offline: { price: 'от 84 000 ₸', sub: 'Очные уроки с преподавателем в классе' },
+                practice:{ price: '5 000 ₸', sub: 'Или 10 000 ₸ за 90 минут полноценного занятия' }
+            };
+            const DEFAULT_WHATSAPP = {
+                number: '77774414888',
+                display: '+7 (777) 441-48-88',
+                text: 'Здравствуйте! Хочу записаться на курс в DriveSchool.kz'
+            };
+            const DEFAULT_BLOG = [
+                {
+                    id: 'demo-1',
+                    title: 'Как сдать экзамен в ЦОНе с первого раза',
+                    date: new Date().toISOString().split('T')[0],
+                    mediaType: 'image',
+                    image: 'https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=800&q=80',
+                    video: '',
+                    text: 'Главный секрет успешной сдачи — это спокойствие и уверенность за рулём. Мы подготовили 5 практических советов, которые помогут вам пройти экзамен без лишнего стресса:\n\n1. Отработайте все упражнения на автодроме до автоматизма.\n2. Изучите экзаменационные маршруты вашего ЦОНа.\n3. Не забывайте про зеркала и поворотники.\n4. Держите дистанцию и соблюдайте скоростной режим.\n5. Дышите ровно — инструктор рядом, всё под контролем!'
+                },
+                {
+                    id: 'demo-2',
+                    title: 'Видео-обзор нашего нового Hyundai Accent 2023',
+                    date: new Date(Date.now() - 86400000 * 5).toISOString().split('T')[0],
+                    mediaType: 'video',
+                    image: '',
+                    video: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+                    text: 'Мы пополнили автопарк новым Hyundai Accent 2023 года с автоматической коробкой передач. В этом видео — короткий обзор: салон, управление, климат-контроль и всё, что нужно знать ученикам перед первым занятием.'
+                },
+                {
+                    id: 'demo-3',
+                    title: 'История успеха: как Айгерим сдала с первого раза',
+                    date: new Date(Date.now() - 86400000 * 10).toISOString().split('T')[0],
+                    mediaType: 'image',
+                    image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80',
+                    video: '',
+                    text: 'Айгерим пришла к нам с полным отсутствием опыта вождения и сильным страхом перед машиной. Через 2 месяца регулярных занятий она сдала экзамен в ЦОНе с первого раза!\n\nВот что она рассказала: «Инструктор Елена помогла мне поверить в себя. Мы ездили по тем же маршрутам, что и на экзамене, поэтому в день сдачи я не растерялась».'
+                }
+            ];
+
+            function readLS(key, fallback) {
+                try {
+                    const raw = localStorage.getItem(key);
+                    return raw ? JSON.parse(raw) : fallback;
+                } catch (e) { return fallback; }
+            }
+            function writeLS(key, value) { localStorage.setItem(key, JSON.stringify(value)); }
+
+            function applyPricing() {
+                const p = readLS(LS_PRICING, DEFAULT_PRICING);
+                const cards = document.querySelectorAll('.price-card');
+                if (cards[0]) {
+                    cards[0].querySelector('.price-card__amount').textContent = p.online.price;
+                    cards[0].querySelector('.price-card__sub').textContent = p.online.sub;
+                }
+                if (cards[1]) {
+                    cards[1].querySelector('.price-card__amount').textContent = p.offline.price;
+                    cards[1].querySelector('.price-card__sub').textContent = p.offline.sub;
+                }
+                if (cards[2]) {
+                    cards[2].querySelector('.price-card__amount').innerHTML = p.practice.price + ' <span class="price-unit">/ 1 акад. час</span>';
+                    cards[2].querySelector('.price-card__sub').innerHTML = p.practice.sub;
+                }
+            }
+
+            function applyWhatsapp() {
+                const w = readLS(LS_WHATSAPP, DEFAULT_WHATSAPP);
+                document.querySelectorAll('a[href*="wa.me/"]').forEach(a => {
+                    try {
+                        const newText = a.href.split('?text=')[1];
+                        const finalText = newText ? decodeURIComponent(newText) : w.text;
+                        a.href = 'https://wa.me/' + w.number + '?text=' + encodeURIComponent(finalText);
+                    } catch(e) {}
+                });
+                const headerPhone = document.querySelector('.header__phone');
+                if (headerPhone) {
+                    const span = headerPhone.querySelector('span');
+                    if (span) span.textContent = w.display;
+                    headerPhone.href = 'tel:+' + w.number.replace(/\D/g,'');
+                }
+                const footerPhone = document.querySelector('.contacts-list a[href^="tel:"]');
+                if (footerPhone) {
+                    footerPhone.textContent = w.display;
+                    footerPhone.href = 'tel:+' + w.number.replace(/\D/g,'');
+                }
+                const footerWa = document.querySelector('.contacts-list a[href*="wa.me/"]');
+                if (footerWa) footerWa.textContent = w.display + ' (WhatsApp)';
+            }
+
+            function applyFleet() {
+                const fleet = readLS(LS_FLEET, null);
+                if (!fleet || !fleet.length) return;
+                const grid = document.querySelector('.fleet__grid');
+                if (!grid) return;
+                grid.innerHTML = '';
+                fleet.forEach(car => {
+                    const card = document.createElement('div');
+                    card.className = 'car-card';
+                    card.setAttribute('data-category', car.category);
+                    const badgeClass = car.category === 'akpp' ? 'badge--akpp' : 'badge--mkpp';
+                    const badgeText = car.category === 'akpp' ? 'АКПП' : 'МКПП';
+                    card.innerHTML = `
+                        <div class="car-card__image-container">
+                            <span class="car-card__badge ${badgeClass}">${badgeText}</span>
+                            <img src="${car.image}" alt="Фото машины ${car.title}" class="car-card__image" onerror="this.src='https://images.unsplash.com/photo-1590362891991-f776e747a588?auto=format&fit=crop&w=600&q=80'">
+                        </div>
+                        <div class="car-card__body">
+                            <h3 class="car-card__title">${car.title}</h3>
+                            <div class="car-card__specs">
+                                <div class="spec-item"><i class="fa-solid fa-gear"></i> Коробка: <strong>${car.gearbox}</strong></div>
+                                <div class="spec-item"><i class="fa-solid fa-snowflake"></i> ${car.climateLabel}: <strong>${car.climate}</strong></div>
+                                <div class="spec-item"><i class="fa-solid fa-circle-check"></i> Дублирующие педали: <strong>${car.pedals}</strong></div>
+                            </div>
+                            <a href="https://wa.me/${readLS(LS_WHATSAPP, DEFAULT_WHATSAPP).number}?text=${encodeURIComponent('Здравствуйте! Хочу обучаться на ' + car.title)}" target="_blank" rel="noopener" class="btn btn--whatsapp btn--full">
+                                <i class="fa-brands fa-whatsapp"></i>
+                                <span>Выбрать на WhatsApp</span>
+                            </a>
+                        </div>
+                    `;
+                    grid.appendChild(card);
+                });
+            }
+
+            applyPricing();
+            applyWhatsapp();
+            applyFleet();
+
+            function openEditor(id) { const el = document.getElementById(id); if (el) el.classList.add('active'); }
+            function closeEditor(el) { if (el) el.classList.remove('active'); }
+
+            document.querySelectorAll('[data-admin-action]').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const action = btn.getAttribute('data-admin-action');
+                    if (action === 'pricing') {
+                        const p = readLS(LS_PRICING, DEFAULT_PRICING);
+                        document.getElementById('edit-price-online').value = p.online.price;
+                        document.getElementById('edit-sub-online').value = p.online.sub;
+                        document.getElementById('edit-price-offline').value = p.offline.price;
+                        document.getElementById('edit-sub-offline').value = p.offline.sub;
+                        document.getElementById('edit-price-practice').value = p.practice.price;
+                        document.getElementById('edit-sub-practice').value = p.practice.sub;
+                        openEditor('editor-pricing');
+                    } else if (action === 'fleet') {
+                        renderFleetEditor();
+                        openEditor('editor-fleet');
+                    } else if (action === 'whatsapp') {
+                        const w = readLS(LS_WHATSAPP, DEFAULT_WHATSAPP);
+                        document.getElementById('edit-whatsapp').value = w.number;
+                        document.getElementById('edit-phone-display').value = w.display;
+                        document.getElementById('edit-whatsapp-text').value = w.text;
+                        openEditor('editor-whatsapp');
+                    } else if (action === 'theme') {
+                        updateThemeOptionsUI(getThemeChoice());
+                        openEditor('editor-theme');
+                    } else if (action === 'blog') {
+                        renderBlogEditor();
+                        openEditor('editor-blog');
+                    }
+                });
+            });
+
+            document.querySelectorAll('[data-close-editor]').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const modal = e.target.closest('.modal-overlay');
+                    if (modal) closeEditor(modal);
+                });
+            });
+            document.querySelectorAll('.editor-modal, .post-view').forEach(modal => {
+                const parent = modal.parentElement;
+                if (parent && parent.classList.contains('modal-overlay')) {
+                    parent.addEventListener('click', (e) => { if (e.target === parent) closeEditor(parent); });
+                }
+            });
+
+            const savePricingBtn = document.getElementById('save-pricing');
+            if (savePricingBtn) savePricingBtn.addEventListener('click', () => {
+                const data = {
+                    online:   { price: document.getElementById('edit-price-online').value, sub: document.getElementById('edit-sub-online').value },
+                    offline:  { price: document.getElementById('edit-price-offline').value, sub: document.getElementById('edit-sub-offline').value },
+                    practice: { price: document.getElementById('edit-price-practice').value, sub: document.getElementById('edit-sub-practice').value }
+                };
+                writeLS(LS_PRICING, data);
+                applyPricing();
+                closeEditor(document.getElementById('editor-pricing'));
+                showToast('Цены сохранены!');
+            });
+
+            const saveWaBtn = document.getElementById('save-whatsapp');
+            if (saveWaBtn) saveWaBtn.addEventListener('click', () => {
+                const data = {
+                    number: document.getElementById('edit-whatsapp').value.replace(/\D/g,''),
+                    display: document.getElementById('edit-phone-display').value,
+                    text: document.getElementById('edit-whatsapp-text').value
+                };
+                writeLS(LS_WHATSAPP, data);
+                applyWhatsapp();
+                applyFleet();
+                closeEditor(document.getElementById('editor-whatsapp'));
+                showToast('Настройки WhatsApp сохранены!');
+            });
+
+            function getCurrentFleetFromDOM() {
+                const cards = document.querySelectorAll('.car-card');
+                const result = [];
+                cards.forEach(card => {
+                    const title = card.querySelector('.car-card__title')?.textContent.trim() || '';
+                    const category = card.getAttribute('data-category') || 'akpp';
+                    const image = card.querySelector('.car-card__image')?.getAttribute('src') || '';
+                    const specs = card.querySelectorAll('.spec-item strong');
+                    const gearbox = specs[0]?.textContent.trim() || '';
+                    const climate = specs[1]?.textContent.trim() || '';
+                    const pedals = specs[2]?.textContent.trim() || 'Да';
+                    result.push({ title, category, image, gearbox, climate, pedals, climateLabel: climate.includes('Кондиционер') ? 'Кондиционер' : 'Климат-контроль' });
+                });
+                return result;
+            }
+
+            let fleetEditorData = [];
+
+            function renderFleetEditor() {
+                const saved = readLS(LS_FLEET, null);
+                fleetEditorData = saved && saved.length ? JSON.parse(JSON.stringify(saved)) : getCurrentFleetFromDOM();
+                const container = document.getElementById('fleet-edit-container');
+                if (!container) return;
+                container.innerHTML = '';
+                fleetEditorData.forEach((car, i) => {
+                    const item = document.createElement('div');
+                    item.className = 'car-edit-item';
+                    item.innerHTML = `
+                        <div class="car-edit-item__header">
+                            <span class="car-edit-item__num">Машина #${i + 1}</span>
+                            <button class="car-edit-item__delete" data-del-car="${i}"><i class="fa-solid fa-trash"></i> Удалить</button>
+                        </div>
+                        <div class="editor-field"><label>Название</label><input type="text" data-car-field="title" data-car-index="${i}" value="${car.title || ''}"></div>
+                        <div class="editor-row">
+                            <div class="editor-field">
+                                <label>Коробка</label>
+                                <select data-car-field="category" data-car-index="${i}">
+                                    <option value="akpp" ${car.category === 'akpp' ? 'selected' : ''}>АКПП (Автомат)</option>
+                                    <option value="mkpp" ${car.category === 'mkpp' ? 'selected' : ''}>МКПП (Механика)</option>
+                                </select>
+                            </div>
+                            <div class="editor-field"><label>Климат</label><input type="text" data-car-field="climate" data-car-index="${i}" value="${car.climate || ''}"></div>
+                        </div>
+                        <div class="editor-field">
+                            <label>Ссылка на картинку (URL)</label>
+                            <input type="text" data-car-field="image" data-car-index="${i}" value="${car.image || ''}">
+                            <img src="${car.image || ''}" class="car-edit-item__preview" onerror="this.style.display='none'">
+                        </div>
+                    `;
+                    container.appendChild(item);
+                });
+                container.querySelectorAll('[data-del-car]').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        fleetEditorData.splice(parseInt(btn.getAttribute('data-del-car')), 1);
+                        renderFleetEditor();
+                    });
+                });
+                container.querySelectorAll('[data-car-field]').forEach(input => {
+                    input.addEventListener('input', () => {
+                        const idx = parseInt(input.getAttribute('data-car-index'));
+                        const field = input.getAttribute('data-car-field');
+                        fleetEditorData[idx][field] = input.value;
+                        if (field === 'image') {
+                            const img = input.parentElement.querySelector('.car-edit-item__preview');
+                            if (img) { img.src = input.value; img.style.display = ''; }
+                        }
+                    });
+                });
+            }
+
+            const addCarBtn = document.getElementById('add-car-btn');
+            if (addCarBtn) addCarBtn.addEventListener('click', () => {
+                fleetEditorData.push({
+                    title: 'Новая машина', category: 'akpp', image: '', gearbox: 'Автомат (АКПП)',
+                    climate: 'Есть', pedals: 'Да', climateLabel: 'Климат-контроль'
+                });
+                renderFleetEditor();
+            });
+
+            const saveFleetBtn = document.getElementById('save-fleet');
+            if (saveFleetBtn) saveFleetBtn.addEventListener('click', () => {
+                fleetEditorData.forEach(car => {
+                    car.gearbox = car.category === 'akpp' ? 'Автомат (АКПП)' : 'Механика (МКПП)';
+                });
+                writeLS(LS_FLEET, fleetEditorData);
+                applyFleet();
+                closeEditor(document.getElementById('editor-fleet'));
+                showToast('Автопарк сохранён!');
+            });
+
+            // ===== Шаг 3: Тема =====
+            const LS_THEME = 'ds_theme';
+            function getSystemTheme() {
+                return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            }
+            function applyTheme(themeChoice) {
+                let actual = themeChoice;
+                if (themeChoice === 'system') actual = getSystemTheme();
+                document.documentElement.setAttribute('data-theme', actual);
+            }
+            function getThemeChoice() { return localStorage.getItem(LS_THEME) || 'light'; }
+            function setThemeChoice(choice) {
+                localStorage.setItem(LS_THEME, choice);
+                applyTheme(choice);
+                updateThemeOptionsUI(choice);
+            }
+            function updateThemeOptionsUI(choice) {
+                document.querySelectorAll('[data-theme-choice]').forEach(btn => {
+                    btn.classList.toggle('active', btn.getAttribute('data-theme-choice') === choice);
+                });
+            }
+
+            const themeToggle = document.getElementById('theme-toggle');
+            if (themeToggle) themeToggle.addEventListener('click', () => {
+                const current = document.documentElement.getAttribute('data-theme');
+                const next = current === 'dark' ? 'light' : 'dark';
+                setThemeChoice(next);
+                showToast(next === 'dark' ? 'Тёмная тема включена 🌙' : 'Светлая тема включена ☀️');
+            });
+
+            document.querySelectorAll('[data-theme-choice]').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const choice = btn.getAttribute('data-theme-choice');
+                    setThemeChoice(choice);
+                    showToast('Тема: ' + (choice === 'light' ? 'Светлая' : choice === 'dark' ? 'Тёмная' : 'Системная'));
+                });
+            });
+
+            if (window.matchMedia) {
+                window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+                    if (getThemeChoice() === 'system') applyTheme('system');
+                });
+            }
+
+            applyTheme(getThemeChoice());
+            updateThemeOptionsUI(getThemeChoice());
+
+            // ===== Шаг 4: Блог =====
+            function getYouTubeId(url) {
+                if (!url) return '';
+                const patterns = [
+                    /(?:youtube\.com\/watch\?v=)([\w-]+)/,
+                    /(?:youtu\.be\/)([\w-]+)/,
+                    /(?:youtube\.com\/embed\/)([\w-]+)/,
+                    /(?:youtube\.com\/shorts\/)([\w-]+)/
+                ];
+                for (const p of patterns) {
+                    const m = url.match(p);
+                    if (m) return m[1];
+                }
+                return '';
+            }
+            function formatDate(dateStr) {
+                if (!dateStr) return '';
+                try {
+                    const d = new Date(dateStr);
+                    return d.toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' });
+                } catch(e) { return dateStr; }
+            }
+            function makeExcerpt(text, len = 140) {
+                if (!text) return '';
+                const clean = text.replace(/\s+/g, ' ').trim();
+                return clean.length > len ? clean.slice(0, len).trim() + '…' : clean;
+            }
+            function getBlogPosts() {
+                const saved = readLS(LS_BLOG, null);
+                if (saved === null) {
+                    writeLS(LS_BLOG, DEFAULT_BLOG);
+                    return DEFAULT_BLOG;
+                }
+                return saved;
+            }
+
+            function renderBlog() {
+                const grid = document.getElementById('blog-grid');
+                if (!grid) return;
+                const posts = getBlogPosts();
+                const isAdmin = localStorage.getItem('ds_logged_in') === 'true';
+
+                if (!posts.length) {
+                    grid.innerHTML = `
+                        <div class="blog__empty" style="grid-column: 1 / -1;">
+                            <i class="fa-solid fa-newspaper"></i>
+                            <h3>Пока нет публикаций</h3>
+                            <p>Загляните позже — мы готовим интересные статьи и видео.</p>
+                        </div>
+                    `;
+                    return;
+                }
+
+                const sorted = [...posts].sort((a, b) => (b.date || '').localeCompare(a.date || ''));
+
+                grid.innerHTML = sorted.map(post => {
+                    let mediaHTML = '';
+                    if (post.mediaType === 'video') {
+                        const vid = getYouTubeId(post.video);
+                        if (vid) {
+                            mediaHTML = `
+                                <div class="blog-card__media">
+                                    <div class="blog-card__media-badge"><i class="fa-brands fa-youtube"></i> Видео</div>
+                                    <iframe src="https://www.youtube.com/embed/${vid}" allowfullscreen loading="lazy"></iframe>
+                                </div>
+                            `;
+                        } else {
+                            mediaHTML = `<div class="blog-card__media"><div class="blog-card__media-badge"><i class="fa-solid fa-video"></i> Видео</div></div>`;
+                        }
+                    } else if (post.mediaType === 'image' && post.image) {
+                        mediaHTML = `
+                            <div class="blog-card__media">
+                                <div class="blog-card__media-badge"><i class="fa-solid fa-image"></i> Фото</div>
+                                <img src="${post.image}" alt="${post.title}" onerror="this.src='https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=600&q=80'">
+                            </div>
+                        `;
+                    } else {
+                        mediaHTML = `<div class="blog-card__media" style="display:flex; align-items:center; justify-content:center; color:var(--text-light);"><i class="fa-solid fa-newspaper" style="font-size:3rem;"></i></div>`;
+                    }
+
+                    const adminBtns = isAdmin ? `
+                        <div class="blog-card__admin-btns">
+                            <button class="blog-card__admin-btn blog-card__admin-btn--edit" data-blog-edit="${post.id}" title="Редактировать"><i class="fa-solid fa-pen"></i></button>
+                            <button class="blog-card__admin-btn blog-card__admin-btn--delete" data-blog-delete="${post.id}" title="Удалить"><i class="fa-solid fa-trash"></i></button>
+                        </div>
+                    ` : '';
+
+                    return `
+                        <article class="blog-card">
+                            ${mediaHTML}
+                            <div class="blog-card__body">
+                                <div class="blog-card__date"><i class="fa-regular fa-calendar"></i> ${formatDate(post.date)}</div>
+                                <h3 class="blog-card__title">${post.title}</h3>
+                                <p class="blog-card__excerpt">${makeExcerpt(post.text)}</p>
+                                <div class="blog-card__actions">
+                                    <button class="blog-card__read" data-blog-view="${post.id}">Читать далее <i class="fa-solid fa-arrow-right"></i></button>
+                                    ${adminBtns}
+                                </div>
+                            </div>
+                        </article>
+                    `;
+                }).join('');
+
+                grid.querySelectorAll('[data-blog-view]').forEach(btn => {
+                    btn.addEventListener('click', () => openPostView(btn.getAttribute('data-blog-view')));
+                });
+                grid.querySelectorAll('[data-blog-edit]').forEach(btn => {
+                    btn.addEventListener('click', () => openPostEditor(btn.getAttribute('data-blog-edit')));
+                });
+                grid.querySelectorAll('[data-blog-delete]').forEach(btn => {
+                    btn.addEventListener('click', () => deletePost(btn.getAttribute('data-blog-delete')));
+                });
+            }
+
+            function openPostView(id) {
+                const posts = getBlogPosts();
+                const post = posts.find(p => p.id === id);
+                if (!post) return;
+
+                const modal = document.getElementById('post-view');
+                const mediaEl = document.getElementById('post-view-media');
+                document.getElementById('post-view-date').innerHTML = `<i class="fa-regular fa-calendar"></i> ${formatDate(post.date)}`;
+                document.getElementById('post-view-title').textContent = post.title;
+                document.getElementById('post-view-text').textContent = post.text;
+
+                if (post.mediaType === 'video') {
+                    const vid = getYouTubeId(post.video);
+                    if (vid) {
+                        mediaEl.innerHTML = `<iframe src="https://www.youtube.com/embed/${vid}" allowfullscreen></iframe>`;
+                        mediaEl.style.display = 'block';
+                    } else {
+                        mediaEl.innerHTML = '';
+                        mediaEl.style.display = 'none';
+                    }
+                } else if (post.mediaType === 'image' && post.image) {
+                    mediaEl.innerHTML = `<img src="${post.image}" alt="${post.title}">`;
+                    mediaEl.style.display = 'block';
+                } else {
+                    mediaEl.innerHTML = '';
+                    mediaEl.style.display = 'none';
+                }
+
+                openEditor('post-view');
+            }
+
+            function renderBlogEditor() {
+                const container = document.getElementById('blog-edit-container');
+                if (!container) return;
+                const posts = getBlogPosts();
+
+                if (!posts.length) {
+                    container.innerHTML = `<p style="text-align:center; color:var(--text-light); font-size:0.9rem; padding:20px 0;">Пока нет постов. Нажмите «Добавить пост».</p>`;
+                    return;
+                }
+
+                const sorted = [...posts].sort((a, b) => (b.date || '').localeCompare(a.date || ''));
+
+                container.innerHTML = sorted.map((post, i) => `
+                    <div class="blog-edit-item">
+                        <div class="blog-edit-item__header">
+                            <span class="blog-edit-item__num">Пост #${i + 1} · ${formatDate(post.date)}</span>
+                            <div class="blog-edit-item__actions">
+                                <button class="blog-edit-item__btn blog-edit-item__btn--edit" data-blog-edit-list="${post.id}"><i class="fa-solid fa-pen"></i> Изменить</button>
+                                <button class="blog-edit-item__btn blog-edit-item__btn--delete" data-blog-delete-list="${post.id}"><i class="fa-solid fa-trash"></i> Удалить</button>
+                            </div>
+                        </div>
+                        <div style="font-weight:700; color:var(--dark); font-size:0.95rem;">${post.title}</div>
+                        <div style="font-size:0.85rem; color:var(--text-light); margin-top:4px;">${makeExcerpt(post.text, 90)}</div>
+                    </div>
+                `).join('');
+
+                container.querySelectorAll('[data-blog-edit-list]').forEach(btn => {
+                    btn.addEventListener('click', () => openPostEditor(btn.getAttribute('data-blog-edit-list')));
+                });
+                container.querySelectorAll('[data-blog-delete-list]').forEach(btn => {
+                    btn.addEventListener('click', () => deletePost(btn.getAttribute('data-blog-delete-list')));
+                });
+            }
+
+            let currentEditingPostId = null;
+
+            function openPostEditor(id) {
+                currentEditingPostId = id || null;
+                const titleEl = document.getElementById('post-modal-title');
+
+                if (id) {
+                    const posts = getBlogPosts();
+                    const post = posts.find(p => p.id === id);
+                    if (!post) return;
+                    titleEl.textContent = 'Редактировать пост';
+                    document.getElementById('post-title').value = post.title || '';
+                    document.getElementById('post-date').value = post.date || new Date().toISOString().split('T')[0];
+                    document.getElementById('post-media-type').value = post.mediaType || 'image';
+                    document.getElementById('post-image').value = post.image || '';
+                    document.getElementById('post-video').value = post.video || '';
+                    document.getElementById('post-text').value = post.text || '';
+
+                    const preview = document.getElementById('post-image-preview');
+                    if (post.mediaType === 'image' && post.image) {
+                        preview.src = post.image;
+                        preview.style.display = 'block';
+                    } else {
+                        preview.style.display = 'none';
+                    }
+                } else {
+                    titleEl.textContent = 'Новый пост';
+                    document.getElementById('post-title').value = '';
+                    document.getElementById('post-date').value = new Date().toISOString().split('T')[0];
+                    document.getElementById('post-media-type').value = 'image';
+                    document.getElementById('post-image').value = '';
+                    document.getElementById('post-video').value = '';
+                    document.getElementById('post-text').value = '';
+                    document.getElementById('post-image-preview').style.display = 'none';
+                }
+
+                togglePostMediaFields();
+                openEditor('editor-post');
+            }
+
+            function togglePostMediaFields() {
+                const type = document.getElementById('post-media-type').value;
+                document.getElementById('post-image-field').style.display = (type === 'image') ? 'block' : 'none';
+                document.getElementById('post-video-field').style.display = (type === 'video') ? 'block' : 'none';
+            }
+
+            const postMediaType = document.getElementById('post-media-type');
+            if (postMediaType) postMediaType.addEventListener('change', togglePostMediaFields);
+
+            const postImageInput = document.getElementById('post-image');
+            if (postImageInput) {
+                postImageInput.addEventListener('input', () => {
+                    const preview = document.getElementById('post-image-preview');
+                    if (postImageInput.value) {
+                        preview.src = postImageInput.value;
+                        preview.style.display = 'block';
+                    } else {
+                        preview.style.display = 'none';
+                    }
+                });
+            }
+
+            const savePostBtn = document.getElementById('save-post');
+            if (savePostBtn) {
+                savePostBtn.addEventListener('click', () => {
+                    const title = document.getElementById('post-title').value.trim();
+                    const text = document.getElementById('post-text').value.trim();
+                    const date = document.getElementById('post-date').value || new Date().toISOString().split('T')[0];
+                    const mediaType = document.getElementById('post-media-type').value;
+                    const image = document.getElementById('post-image').value.trim();
+                    const video = document.getElementById('post-video').value.trim();
+
+                    if (!title || !text) {
+                        showToast('Заполните заголовок и текст поста');
+                        return;
+                    }
+
+                    let posts = getBlogPosts();
+
+                    if (currentEditingPostId) {
+                        const idx = posts.findIndex(p => p.id === currentEditingPostId);
+                        if (idx !== -1) posts[idx] = { ...posts[idx], title, text, date, mediaType, image, video };
+                        showToast('Пост обновлён!');
+                    } else {
+                        posts.push({ id: 'post-' + Date.now(), title, text, date, mediaType, image, video });
+                        showToast('Пост добавлен!');
+                    }
+
+                    writeLS(LS_BLOG, posts);
+                    renderBlog();
+                    renderBlogEditor();
+                    closeEditor(document.getElementById('editor-post'));
+                    currentEditingPostId = null;
+                });
+            }
+
+            function deletePost(id) {
+                if (!confirm('Удалить этот пост? Действие нельзя отменить.')) return;
+                let posts = getBlogPosts();
+                posts = posts.filter(p => p.id !== id);
+                writeLS(LS_BLOG, posts);
+                renderBlog();
+                renderBlogEditor();
+                showToast('Пост удалён');
+            }
+
+            const addPostBtn = document.getElementById('add-post-btn');
+            if (addPostBtn) addPostBtn.addEventListener('click', () => openPostEditor(null));
+
+            renderBlog();
+        });
+    </script>
+</body>
+</html>

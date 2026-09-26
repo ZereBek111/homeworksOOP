@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Админ — SkinVault</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="logo"><span class="logo-icon">◆</span> SKIN<span class="accent">VAULT</span> <span class="admin-tag">ADMIN</span></a>
+    <div class="nav-auth">
+      <button class="btn btn-ghost" id="logoutBtn">Выйти</button>
+    </div>
+  </div>
+</header>
+
+<main class="section">
+  <h1>Админ-<span class="accent">панель</span></h1>
+  <p class="muted mb-30">Управление контентом и одобрение заявок</p>
+
+  <div class="tabs">
+    <button class="tab active" data-tab="pending">🕓 Заявки</button>
+    <button class="tab" data-tab="upload">⬆️ Загрузить</button>
+    <button class="tab" data-tab="users">👥 Пользователи</button>
+  </div>
+
+  <div class="tab-content active" id="pending">
+    <h3>Заявки на публикацию</h3>
+    <div class="list">
+      <div class="list-item">
+        <div class="list-thumb" style="background-image:url('assets/skin2.png')"></div>
+        <div class="list-info">
+          <strong>Neon Ninja</strong>
+          <span class="muted">от user_12345 • скин</span>
+        </div>
+        <div class="actions">
+          <button class="btn btn-success btn-sm">✓ Одобрить</button>
+          <button class="btn btn-danger btn-sm">✕ Отклонить</button>
+        </div>
+      </div>
+      <div class="list-item">
+        <div class="list-thumb blog-thumb">📝</div>
+        <div class="list-info">
+          <strong>Обзор новых скинов сентября</strong>
+          <span class="muted">от blogger_pro • статья</span>
+        </div>
+        <div class="actions">
+          <button class="btn btn-success btn-sm">✓ Одобрить</button>
+          <button class="btn btn-danger btn-sm">✕ Отклонить</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-content" id="upload">
+    <h3>Добавить контент</h3>
+    <form class="upload-form">
+      <label>Тип контента
+        <select>
+          <option>Скин</option>
+          <option>Кейс</option>
+          <option>Статья в блог</option>
+        </select>
+      </label>
+      <label>Название
+        <input type="text" placeholder="Shadow Reaper">
+      </label>
+      <label>Описание
+        <textarea rows="4" placeholder="Описание скина..."></textarea>
+      </label>
+      <label>Цена (₽)
+        <input type="number" placeholder="999">
+      </label>
+      <label class="file-drop">
+        <input type="file" accept="image/*,video/*">
+        <span>📎 Перетащи картинку/видео или нажми для выбора</span>
+      </label>
+      <button class="btn btn-primary btn-lg" type="button">Опубликовать</button>
+    </form>
+  </div>
+
+  <div class="tab-content" id="users">
+    <h3>Пользователи</h3>
+    <div class="list">
+      <div class="list-item">
+        <div class="list-thumb avatar">N</div>
+        <div class="list-info">
+          <strong>NinjaPro2010</strong>
+          <span class="muted">ninja@mail.ru • покупатель</span>
+        </div>
+        <span class="badge-role user">USER</span>
+      </div>
+      <div class="list-item">
+        <div class="list-thumb avatar">A</div>
+        <div class="list-info">
+          <strong>AdminRoot</strong>
+          <span class="muted">admin@skinvault.ru • администратор</span>
+        </div>
+        <span class="badge-role admin">ADMIN</span>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script src="js/admin.js"></script>
+<script src="js/auth.js"></script>
+</body>
+</html>

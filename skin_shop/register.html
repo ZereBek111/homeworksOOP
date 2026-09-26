@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Регистрация — SkinVault</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="auth-page">
+<div class="auth-box">
+  <a href="index.html" class="logo center-logo">
+    <span class="logo-icon">◆</span> SKIN<span class="accent">VAULT</span>
+  </a>
+  <h2>Создай аккаунт</h2>
+  <p class="muted">Присоединяйся к 48 000+ игрокам</p>
+
+  <form id="registerForm" class="auth-form">
+    <label>Имя пользователя
+      <input type="text" name="username" required placeholder="NinjaPro2010">
+    </label>
+    <label>Email
+      <input type="email" name="email" required placeholder="you@example.com">
+    </label>
+    <label>Пароль
+      <input type="password" name="password" required minlength="6" placeholder="Минимум 6 символов">
+    </label>
+    <label class="checkbox">
+      <input type="checkbox" required> Я согласен с правилами сервиса
+    </label>
+    <button class="btn btn-primary btn-lg full" type="submit">Создать аккаунт</button>
+  </form>
+
+  <p class="auth-switch">Уже есть аккаунт? <a href="login.html">Войти</a></p>
+</div>
+<script src="js/auth.js"></script>
+</body>
+</html>

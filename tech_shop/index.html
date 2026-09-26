@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="ru">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>DoubleSmart | Premium Smart Store</title>
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet"/>
+  <link href="style.css" rel="stylesheet"/>
+ </head>
+ <body>
+  <header>
+   <div class="container nav-wrapper">
+    <div class="logo-block">
+     <div class="logo-title">
+      DoubleSmart
+     </div>
+     <div class="badge-store">
+      Premium Store
+     </div>
+    </div>
+    <nav>
+     <ul>
+      <li>
+       <a href="#catalog">
+        Каталог
+       </a>
+      </li>
+      <li>
+       <a href="#loyalty">
+        Лояльность
+       </a>
+      </li>
+      <li>
+       <a href="#reviews">
+        Отзывы
+       </a>
+      </li>
+     </ul>
+    </nav>
+    <div class="header-actions">
+     <button class="btn" id="addProductBtn" style="margin-right: 10px; padding: 8px 16px;">
+      + Товар
+     </button>
+     <button class="btn btn-outline" id="authBtn" style="padding: 8px 16px; font-size: 13px;">
+      Войти
+     </button>
+     <a class="eco-link ds-inline-1" href="index.html">
+      ← Back to
+                    DoubleSmart Group
+     </a>
+     <div class="cart-btn" id="cartToggle">
+      🛒
+      <div class="cart-count" id="headerCartCount">
+       0
+      </div>
+     </div>
+    </div>
+   </div>
+  </header>
+  <section class="hero">
+   <div class="container">
+    <span class="section-tag">
+     Smart Ecosystem
+    </span>
+    <h1>
+     Технологии,
+     <br/>
+     оживляющие дом
+    </h1>
+    <p>
+     Премиальная техника и системы умного дома, идеально интегрированные в жилые комплексы DoubleSmart Construction.
+    </p>
+    <a class="btn" href="#catalog">
+     Перейти в каталог
+    </a>
+   </div>
+  </section>
+  <section class="section-padding" id="catalog">
+   <div class="container">
+    <div class="ds-inline-2">
+     <h2>
+      Каталог устройств
+     </h2>
+     <div class="filters">
+      <div style="flex: 1; min-width: 200px; max-width: 350px;">
+       <input id="searchInput" placeholder="🔍 Поиск товаров..." style="width: 100%; padding: 12px 20px; border-radius: 50px; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.05); color: white; font-size: 14px; outline: none; transition: 0.3s;" type="text"/>
+      </div>
+      <button class="filter-btn active" data-filter="all">
+       Все товары
+      </button>
+      <button class="filter-btn" data-filter="smart">
+       Smart Home
+      </button>
+      <button class="filter-btn" data-filter="kitchen">
+       Кухня
+      </button>
+      <button class="filter-btn" data-filter="cleaning">
+       Уборка
+      </button>
+     </div>
+    </div>
+    <div class="products-grid" id="productsContainer">
+    </div>
+   </div>
+  </section>
+  <section class="container" id="loyalty">
+   <div class="loyalty-banner">
+    <span class="section-tag">
+     Для жителей DoubleSmart
+    </span>
+    <h3 class="ds-inline-3">
+     Программа лояльности
+    </h3>
+    <p class="ds-inline-4">
+     Введите номер договора (начинается на DS) и получите скидку 20%.
+    </p>
+    <div class="loyalty-form">
+     <input class="form-input" id="contractInput" placeholder="Например: DS-KAZ-2026" type="text"/>
+     <button class="btn" id="loyaltyBtn">
+      Активировать
+     </button>
+    </div>
+    <div class="ds-inline-5" id="loyaltySuccess">
+     ✅
+                VIP-статус подтвержден! Цены пересчитаны.
+    </div>
+   </div>
+  </section>
+  <section class="section-padding ds-inline-6" id="reviews">
+   <div class="container">
+    <h2>
+     Отзывы клиентов
+    </h2>
+    <div class="reviews-layout">
+     <div class="reviews-scroll" id="reviewsList">
+     </div>
+     <div class="ds-inline-7">
+      <h3 class="ds-inline-8">
+       Оставить отзыв
+      </h3>
+      <form id="reviewForm">
+       <div class="form-group">
+        <input class="form-input" id="revName" placeholder="Ваше имя" required="" type="text"/>
+       </div>
+       <div class="form-group">
+        <select class="form-input" id="revProduct" required="">
+         <option disabled="" selected="" value="">
+          Выберите купленный товар
+         </option>
+        </select>
+       </div>
+       <div class="form-group">
+        <select class="form-input" id="revRating">
+         <option value="★★★★★">
+          5 звезд (Отлично)
+         </option>
+         <option value="★★★★☆">
+          4 звезды (Хорошо)
+         </option>
+         <option value="★★★☆☆">
+          3 звезды (Нормально)
+         </option>
+         <option value="★★☆☆☆">
+          2 звезды (Плохо)
+         </option>
+         <option value="★☆☆☆☆">
+          1 звезда (Ужасно)
+         </option>
+        </select>
+       </div>
+       <div class="form-group">
+        <textarea class="form-input" id="revText" placeholder="Поделитесь впечатлениями..." required="" rows="4"></textarea>
+       </div>
+       <div class="form-group">
+        <label class="ds-inline-9">
+         <input accept="image/*" class="ds-inline-10" id="revPhoto" type="file"/>
+         📸
+         <span id="fileName">
+          Прикрепить фото товара
+         </span>
+        </label>
+       </div>
+       <button class="btn ds-inline-11" type="submit">
+        Опубликовать отзыв
+       </button>
+      </form>
+     </div>
+    </div>
+   </div>
+  </section>
+  <footer>
+   <div class="container ds-inline-12">
+    <div>
+     © 2026 DoubleSmart. All rights reserved.
+    </div>
+    <div class="ds-inline-13">
+     . Part of DoubleSmart Group.
+    </div>
+   </div>
+  </footer>
+  <div class="modal-overlay" id="productModal">
+   <div class="modal-content">
+    <button class="close-btn" data-close="productModal">
+     ✕
+    </button>
+    <div id="productModalBody">
+    </div>
+   </div>
+  </div>
+  <div class="modal-overlay" id="cartModal">
+   <div class="cart-modal-inner">
+    <button class="close-btn ds-inline-14" data-close="cartModal">
+     ✕
+    </button>
+    <h3 class="ds-inline-15">
+     Ваша корзина
+    </h3>
+    <div class="ds-inline-16" id="cartItemsList">
+    </div>
+    <div class="ds-inline-17" id="cartVipLine">
+     <span>
+      Скидка DoubleSmart VIP (20%):
+     </span>
+     <span id="cartDiscount">
+      - 0 ₸
+     </span>
+    </div>
+    <div class="ds-inline-18">
+     <span>
+      Итого:
+     </span>
+     <span id="cartTotal">
+      0 ₸
+     </span>
+    </div>
+    <button class="btn ds-inline-11" id="checkoutBtn">
+     Перейти к оформлению
+    </button>
+   </div>
+  </div>
+  <div class="modal-overlay" id="checkoutModal">
+   <div class="modal-content ds-inline-19">
+    <button class="close-btn" data-close="checkoutModal">
+     ✕
+    </button>
+    <div class="checkout-modal-body">
+     <h3 class="ds-inline-20">
+      Оформление заказа
+     </h3>
+     <div class="checkout-step active" id="stepContacts">
+      <p class="ds-inline-21">
+       Шаг 1 из 2: Контакты
+      </p>
+      <div class="form-group">
+       <input class="form-input" id="clientName" placeholder="Имя Фамилия" type="text"/>
+      </div>
+      <div class="form-group">
+       <input class="form-input" id="clientPhone" placeholder="+7 (7xx) xxx-xx-xx" type="text"/>
+      </div>
+      <button class="btn ds-inline-22" id="toPaymentBtn">
+       Далее:
+                        Оплата
+      </button>
+     </div>
+     <div class="checkout-step" id="stepPayment">
+      <p class="ds-inline-21">
+       Шаг 2 из 2: Метод оплаты
+      </p>
+      <div class="payment-options">
+       <div class="pay-opt active" data-payment="card">
+        <span class="ds-inline-23">
+         💳
+        </span>
+        <span class="ds-inline-24">
+         Карта
+        </span>
+       </div>
+       <div class="pay-opt kaspi" data-payment="kaspi">
+        <img alt="Kaspi" class="pm-logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwx8m78oYRU-pTiEH6eTrYF59vMIXCAh7IHQ&amp;s"/>
+        <span class="ds-inline-24">
+         Kaspi QR
+        </span>
+       </div>
+       <div class="pay-opt halyk" data-payment="halyk">
+        <img alt="Halyk" class="pm-logo" src="https://placehold.co/40x40/007640/white?text=H"/>
+        <span class="ds-inline-24">
+         Halyk QR
+        </span>
+       </div>
+      </div>
+      <div id="payContentCard">
+       <div class="ds-inline-25">
+        <input class="form-input ds-inline-26" maxlength="19" placeholder="0000 0000 0000 0000" type="text"/>
+        <div class="ds-inline-27">
+         <input class="form-input" placeholder="MM/YY" type="text"/>
+         <input class="form-input" placeholder="CVC" type="text"/>
+        </div>
+       </div>
+       <button class="btn ds-inline-11" id="payBtn">
+        Оплатить
+        <span class="final-price">
+        </span>
+       </button>
+      </div>
+      <div class="ds-inline-28" id="payContentQR">
+       <h4 class="ds-inline-29" id="qrTitle">
+        Сканируйте для оплаты
+       </h4>
+       <div class="qr-display">
+        <img alt="QR Code" id="qrImage" src=""/>
+       </div>
+       <p class="ds-inline-30">
+        <span class="ds-inline-31">
+        </span>
+        Ожидание подтверждения...
+       </p>
+      </div>
+      <button class="btn-outline ds-inline-32" id="backToContactsBtn">
+       Назад
+      </button>
+     </div>
+     <div class="checkout-step" id="stepSuccess">
+      <div id="receiptPlace">
+      </div>
+      <div class="ds-inline-33">
+       <button class="btn-outline" data-close="checkoutModal">
+        Закрыть и скачать
+       </button>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+  <div class="modal-overlay" id="addProductModal">
+   <div class="modal-content" style="width: 500px;">
+    <button class="close-btn" data-close="addProductModal">
+     ✕
+    </button>
+    <div class="checkout-modal-body">
+     <h3 style="margin-bottom: 20px;">
+      Добавить новый товар
+     </h3>
+     <form id="addProductForm">
+      <div class="form-group">
+       <input class="form-input" id="newProdName" placeholder="Название товара" required="" type="text"/>
+      </div>
+      <div class="form-group">
+       <select class="form-input" id="newProdCat" required="">
+        <option value="smart">
+         Smart Home
+        </option>
+        <option value="kitchen">
+         Кухня
+        </option>
+        <option value="cleaning">
+         Уборка
+        </option>
+       </select>
+      </div>
+      <div class="form-group">
+       <input class="form-input" id="newProdPrice" placeholder="Цена (₸)" required="" type="number"/>
+      </div>
+      <div class="form-group">
+       <input class="form-input" id="newProdImage" placeholder="URL фото товара" required="" type="text"/>
+      </div>
+      <div class="form-group">
+       <textarea class="form-input" id="newProdDesc" placeholder="Описание" required="" rows="3"></textarea>
+      </div>
+      <div class="form-group">
+       <p style="font-size: 12px; color: #aaa; margin-bottom: 10px;">
+        Характеристики (Ключ: Значение, по одной на строку)
+       </p>
+       <textarea class="form-input" id="newProdSpecs" placeholder="Например:
+Цвет: Черный
+Мощность: 100Вт" rows="3"></textarea>
+      </div>
+      <button class="btn" style="width: 100%;" type="submit">
+       Сохранить товар
+      </button>
+     </form>
+    </div>
+   </div>
+  </div>
+  <div class="modal-overlay" id="editProductModal">
+   <div class="modal-content edit-product-modal">
+    <button class="close-btn" data-close="editProductModal">
+     ✕
+    </button>
+    <div class="checkout-modal-body">
+     <h3 class="modal-form-title">
+      Изменить товар
+     </h3>
+     <form id="editProductForm">
+      <input id="editProdId" type="hidden"/>
+      <div class="form-grid-2">
+       <div class="form-group">
+        <label class="field-label" for="editProdName">Название</label>
+        <input class="form-input" id="editProdName" placeholder="Название товара" required="" type="text"/>
+       </div>
+       <div class="form-group">
+        <label class="field-label" for="editProdCat">Категория</label>
+        <select class="form-input" id="editProdCat" required="">
+         <option value="smart">Smart Home</option>
+         <option value="kitchen">Кухня</option>
+         <option value="cleaning">Уборка</option>
+        </select>
+       </div>
+      </div>
+      <div class="form-group">
+       <label class="field-label" for="editProdPrice">Цена, ₸</label>
+       <input class="form-input" id="editProdPrice" placeholder="Цена" required="" type="number" min="0"/>
+      </div>
+      <div class="edit-photo-layout">
+       <div class="edit-photo-preview-wrap">
+        <img alt="Фото товара" id="editPhotoPreview" src=""/>
+       </div>
+       <div>
+        <div class="form-group">
+         <label class="field-label" for="editProdImage">URL фотографии</label>
+         <input class="form-input" id="editProdImage" placeholder="https://..." type="text"/>
+        </div>
+        <div class="form-group">
+         <label class="file-upload-label">
+          <input accept="image/*" class="ds-inline-10" id="editProdPhotoFile" type="file"/>
+          📸 <span id="editPhotoName">Можно вставить URL или выбрать файл</span>
+         </label>
+        </div>
+       </div>
+      </div>
+      <div class="form-group">
+       <label class="field-label" for="editProdDesc">Описание</label>
+       <textarea class="form-input" id="editProdDesc" placeholder="Описание товара" rows="3"></textarea>
+      </div>
+      <div class="form-group">
+       <label class="field-label" for="editProdSpecs">Характеристики</label>
+       <p class="form-help">Формат: Ключ: Значение, каждая характеристика с новой строки.</p>
+       <textarea class="form-input" id="editProdSpecs" placeholder="Цвет: Черный&#10;Мощность: 100Вт" rows="5"></textarea>
+      </div>
+      <button class="btn" type="submit" style="width: 100%;">
+       Сохранить изменения
+      </button>
+     </form>
+    </div>
+   </div>
+  </div>
+
+  <div class="modal-overlay" id="profileModal">
+   <div class="modal-content" style="width: 600px;">
+    <button class="close-btn" data-close="profileModal">
+     ✕
+    </button>
+    <div class="checkout-modal-body">
+     <h3 style="margin-bottom: 20px;">
+      👤 Личный кабинет
+     </h3>
+     <div id="profileContent">
+     </div>
+    </div>
+   </div>
+  </div>
+
+  <div class="modal-overlay" id="authModal">
+   <div class="modal-content" style="width: 420px;">
+    <button class="close-btn" data-close="authModal">
+     ✕
+    </button>
+    <div class="checkout-modal-body">
+     <h3 style="margin-bottom: 20px;" id="authTitle">
+      Вход
+     </h3>
+     <form id="authForm">
+      <div class="form-group">
+       <input class="form-input" id="authEmail" placeholder="Email" required="" type="email"/>
+      </div>
+      <div class="form-group">
+       <input class="form-input" id="authPassword" placeholder="Пароль (мин. 6 символов)" required="" minlength="6" type="password"/>
+      </div>
+      <div class="form-group" id="authNameGroup" style="display:none;">
+       <input class="form-input" id="authName" placeholder="Ваше имя" type="text"/>
+      </div>
+      <button class="btn" style="width: 100%;" type="submit" id="authSubmit">
+       Войти
+      </button>
+     </form>
+     <p style="text-align: center; margin-top: 15px; color: var(--text-muted); font-size: 13px;">
+      <span id="authToggleText">
+       Нет аккаунта?
+       <a href="#" id="authToggleLink" style="color: var(--accent-glow);">
+        Зарегистрироваться
+       </a>
+      </span>
+     </p>
+    </div>
+   </div>
+  </div>
+
+  <div class="toast" id="toast">
+  </div>
+  <script src="script.js">
+  </script>
+ </body>
+</html>

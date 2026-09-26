@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Личный кабинет — ROBLOX VAULT</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800;900&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="logo"><span class="logo-mark">◈</span> ROBLOX<span class="accent">VAULT</span></a>
+    <nav class="nav-links">
+      <a href="index.html">Магазин</a>
+      <a href="dashboard.html" class="active">Кабинет</a>
+      <a href="blog.html">Блог</a>
+    </nav>
+    <div class="nav-auth">
+      <span class="user-chip" id="userChip">👤 Гость</span>
+      <button class="btn btn-ghost" onclick="Auth.logout()">Выйти</button>
+    </div>
+  </div>
+</header>
+
+<main class="section">
+  <h1>Личный <span class="accent">кабинет</span></h1>
+  <p class="muted mb-30">Управляй своими скинами и заказами</p>
+
+  <div class="dash-grid">
+    <aside class="dash-menu">
+      <a class="dash-tab active" data-tab="overview">📊 Обзор</a>
+      <a class="dash-tab" data-tab="skins">🎨 Мои скины</a>
+      <a class="dash-tab" data-tab="history">🛒 История покупок</a>
+      <a class="dash-tab" data-tab="settings">⚙️ Настройки</a>
+      <a class="dash-tab" data-tab="balance">💳 Баланс</a>
+    </aside>
+
+    <section class="dash-content">
+
+      <!-- ОБЗОР -->
+      <div class="dash-pane active" id="overview">
+        <div class="stat-row">
+          <div class="stat-card"><span class="muted">Скинов куплено</span><strong>12</strong></div>
+          <div class="stat-card"><span class="muted">Открыто кейсов</span><strong>34</strong></div>
+          <div class="stat-card"><span class="muted">Баланс</span><strong class="accent">12 450 ₸</strong></div>
+        </div>
+        <h3 class="mt-30">Последние покупки</h3>
+        <div class="list">
+          <div class="list-item">
+            <div class="list-thumb" style="background-image:url('assets/skin1.png')"></div>
+            <div class="list-info"><strong>Shadow Reaper</strong><span class="muted">11 сентября 2026</span></div>
+            <span class="price">7 499 ₸</span>
+          </div>
+          <div class="list-item">
+            <div class="list-thumb" style="background-image:url('assets/skin3.png')"></div>
+            <div class="list-info"><strong>Crystal Mage</strong><span class="muted">8 сентября 2026</span></div>
+            <span class="price">3 799 ₸</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- МОИ СКИНЫ -->
+      <div class="dash-pane" id="skins">
+        <h3>Мои скины (12)</h3>
+        <div class="grid-skins mt-30">
+          <div class="skin-card">
+            <div class="skin-img" style="background-image:url('assets/skin1.png')">
+              <span class="tag legendary">LEGENDARY</span>
+            </div>
+            <div class="skin-info"><h3>Shadow Reaper</h3></div>
+          </div>
+          <div class="skin-card">
+            <div class="skin-img" style="background-image:url('assets/skin3.png')">
+              <span class="tag rare">RARE</span>
+            </div>
+            <div class="skin-info"><h3>Crystal Mage</h3></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ИСТОРИЯ -->
+      <div class="dash-pane" id="history">
+        <h3>История покупок</h3>
+        <div class="list mt-30">
+          <div class="list-item">
+            <div class="list-thumb">🛒</div>
+            <div class="list-info"><strong>Shadow Reaper</strong><span class="muted">Заказ #1024 • 11.09.2026</span></div>
+            <span class="price">7 499 ₸</span>
+          </div>
+          <div class="list-item">
+            <div class="list-thumb">🛒</div>
+            <div class="list-info"><strong>Crystal Mage</strong><span class="muted">Заказ #1018 • 08.09.2026</span></div>
+            <span class="price">3 799 ₸</span>
+          </div>
+          <div class="list-item">
+            <div class="list-thumb">📦</div>
+            <div class="list-info"><strong>Legendary Case</strong><span class="muted">Заказ #1002 • 01.09.2026</span></div>
+            <span class="price">9 999 ₸</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- НАСТРОЙКИ -->
+      <div class="dash-pane" id="settings">
+        <h3>Настройки профиля</h3>
+        <form class="upload-form mt-30">
+          <label>Имя пользователя
+            <input type="text" id="setUsername" placeholder="NinjaPro2010">
+          </label>
+          <label>Email
+            <input type="email" id="setEmail" placeholder="you@example.com">
+          </label>
+          <label>Новый пароль
+            <input type="password" placeholder="Оставь пустым, если не меняешь">
+          </label>
+          <button type="button" class="btn btn-primary btn-lg" onclick="alert('Настройки сохранены ✓')">Сохранить изменения</button>
+        </form>
+      </div>
+
+      <!-- БАЛАНС -->
+      <div class="dash-pane" id="balance">
+        <h3>Пополнение баланса</h3>
+        <div class="balance-card mt-30">
+          <span class="muted">Текущий баланс</span>
+          <strong class="gradient-text">12 450 ₸</strong>
+        </div>
+        <div class="topup-row mt-30">
+          <button class="topup-btn" onclick="alert('Пополнение на 1 000 ₸')">+1 000 ₸</button>
+          <button class="topup-btn" onclick="alert('Пополнение на 5 000 ₸')">+5 000 ₸</button>
+          <button class="topup-btn" onclick="alert('Пополнение на 10 000 ₸')">+10 000 ₸</button>
+          <button class="topup-btn" onclick="alert('Пополнение на 50 000 ₸')">+50 000 ₸</button>
+        </div>
+      </div>
+
+    </section>
+  </div>
+</main>
+
+<script src="js/auth.js"></script>
+<script src="js/dashboard.js"></script>
+</body>
+</html>
